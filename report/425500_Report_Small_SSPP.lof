@@ -1,0 +1,27 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces OpenMP Performance for CRS Format depending on Chunk Size\relax }}{21}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces OpenMP Performance for ELLPACK Format depending on Chunk Size\relax }}{21}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces OpenMP Performance for CRS Format depending on Threads\relax }}{22}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces OpenMP Performance for ELLPACK Format depending on Threads\relax }}{22}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=1$\relax }}{23}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=2$\relax }}{23}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=3$\relax }}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=6$\relax }}{24}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces CUDA Performance for CRS Format depending on X BlockSize\relax }}{26}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces CUDA Performance for ELLPACK Format depending on X BlockSize\relax }}{26}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces CUDA Performance for CRS Format depending on Y BlockSize\relax }}{27}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces CUDA Performance for ELLPACK Format depending on Y BlockSize\relax }}{27}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=1$\relax }}{28}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=2$\relax }}{28}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=3$\relax }}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=6$\relax }}{29}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces OpenMP vs CUDA Performance for $k=1$\relax }}{31}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces OpenMP vs CUDA Performance for $k=2$\relax }}{31}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces OpenMP vs CUDA Performance for $k=3$\relax }}{32}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces OpenMP vs CUDA Performance for $k=6$\relax }}{32}{figure.caption.25}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
