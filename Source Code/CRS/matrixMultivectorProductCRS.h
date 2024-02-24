@@ -5,16 +5,17 @@
 #include <chrono>
 #include <vector>
 #include <iostream>
-#include <numeric>   // For std::accumulate
-#include <algorithm> // For std::sort
+#include <numeric>  
+#include <algorithm>
 
 /**
- * @brief Function to execute the sparse matrix-dense vector multiplication using sequential algorithm
+ * @brief Perform the matrix-vector multiplication in the CRS format
  *
- * @param sparseMatrix  Sparse matrix
- * @param fatVector Fat vector
- * @param vecCols  Number of columns in the dense vector
- * @return FatVector Result of the multiplication
+ * @param sparseMatrix Sparse matrix in CRS format
+ * @param fatVector Dense vector
+ * @param result Pointer to the result vector
+ * @param testNumber Number of iterations for the performance measurement
+ * @return double GFLOPS Performance of the kernel in GFLOPS
  */
 double matrixMultivectorProductCRS(const SparseMatrixCRS &sparseMatrix,
                                    const FatVector &fatVector, FatVector &result, const int testNumber);

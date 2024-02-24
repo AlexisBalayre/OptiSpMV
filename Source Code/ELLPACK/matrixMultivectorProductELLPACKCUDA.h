@@ -9,12 +9,15 @@
 #include <algorithm> // For std::sort
 
 /**
- * @brief Function to execute the sparse matrix-dense vector multiplication using sequential algorithm
+ * @brief Multiply sparse matrix with a fat vector using ELLPACK format on CUDA
  *
- * @param sparseMatrix  Sparse matrix
+ * @param sparseMatrix Sparse matrix in ELLPACK format
  * @param fatVector Fat vector
- * @param vecCols  Number of columns in the dense vector
- * @return FatVector Result of the multiplication
+ * @param result Result vector
+ * @param testNumber Number of times to run the operation
+ * @param xBlockSize X-dimension block size
+ * @param yBlockSize Y-dimension block size
+ * @return double Performance in GFLOPS
  */
 double matrixMultivectorProductELLPACKCUDA(const SparseMatrixELLPACK &sparseMatrix, const FatVector &fatVector, FatVector &result, const int testNumber, const int xBlockSize, const int yBlockSize);
 

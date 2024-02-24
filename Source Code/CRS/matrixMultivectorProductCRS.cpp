@@ -1,24 +1,24 @@
 #include "matrixMultivectorProductCRS.h"
 
 /**
- * @brief Function to execute the sparse matrix-dense vector multiplication using sequential algorithm
+ * @brief Perform the matrix-vector multiplication in the CRS format
  *
- * @param sparseMatrix  Sparse matrix
- * @param fatVector Fat vector
- * @param vecCols  Number of columns in the dense vector
- * @return FatVector  Result of the multiplication
+ * @param sparseMatrix Sparse matrix in CRS format
+ * @param fatVector Dense vector
+ * @param result Pointer to the result vector
+ * @param testNumber Number of iterations for the performance measurement
+ * @return double GFLOPS Performance of the kernel in GFLOPS
  */
-
 double matrixMultivectorProductCRS(const SparseMatrixCRS &sparseMatrix,
                                    const FatVector &fatVector, FatVector &result, const int testNumber)
 {
-    std::vector<double> times(testNumber); // To store time taken for each invocation in milliseconds
+    std::vector<double> times(testNumber); // Vector for storing times of individual iterations
 
+    // Perform testNumber iterations
     for (int i = 0; i < testNumber; ++i)
     {
-        // Free the result vector
-        result.values.assign(result.values.size(), 0.0);
-        
+        result.values.assign(result.values.size(), 0.0); // Free the result vector
+
         auto start = std::chrono::high_resolution_clock::now(); // Start timing
 
         int numRows = sparseMatrix.numRows; // Number of rows in the sparse matrix
@@ -36,36 +36,29 @@ double matrixMultivectorProductCRS(const SparseMatrixCRS &sparseMatrix,
                 // Accumulate the product into the result vector
                 for (int k = 0; k < vecCols; ++k)
                 {
-                    // Calculate the flat index for the result vector
-                    int resultIndex = i * vecCols + k;
-                    // Calculate the flat index for the dense vector (fatVector)
-                    int vectorIndex = colIndex * vecCols + k;
-
-                    result.values[resultIndex] += value * fatVector.values[vectorIndex];
+                    int resultIndex = i * vecCols + k;                                   // Calculate the flat index for the result vector
+                    int vectorIndex = colIndex * vecCols + k;                            // Calculate the flat index for the dense vector
+                    result.values[resultIndex] += value * fatVector.values[vectorIndex]; // Perform the multiplication and accumulationw
                 }
             }
         }
 
-        auto end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double, std::milli> duration = end - start;
-        times.push_back(duration.count());
+        auto end = std::chrono::high_resolution_clock::now();             // End timing
+        std::chrono::duration<double, std::milli> duration = end - start; // Calculate the duration
+        times.push_back(duration.count());                                // Store the duration
     }
 
-    // Calculating average time per kernel invocation
-    double avgTime = std::accumulate(times.begin(), times.end(), 0.0) / times.size();
-    // Optionally, calculate median time
-    std::sort(times.begin(), times.end());
-    double medianTime = times[testNumber / 2];
-
     // Calculate performance
-    int NZ = sparseMatrix.values.size(); // Number of non-zero entries
-    int k = fatVector.numCols;           // Number of columns in matrix X
-    double T = avgTime / 1000.0;         // Average time in seconds
-    double FLOPS = (2.0 * NZ * k) / T;
-    double GFLOPS = FLOPS / 1e9;
+    double avgTime = std::accumulate(times.begin(), times.end(), 0.0) / times.size(); // Calculate average time
+    int NZ = sparseMatrix.values.size();                                              // Number of non-zero entries
+    int k = fatVector.numCols;                                                        // Number of columns in matrix X
+    double T = avgTime / 1000.0;                                                      // Average time in seconds
+    double FLOPS = (2.0 * NZ * k) / T;                                                // Number of floating point operations
+    double GFLOPS = FLOPS / 1e9;                                                      // Performance in GFLOPS
 
-    /* std::cout << "Average Time (ms): " << avgTime << std::endl;
-    std::cout << "GFLOPS (CRS): " << GFLOPS << std::endl; */
+    // DISPLAY RESULTS (FOR DEBUGGING)
+    // std::cout << "Average Time (ms): " << avgTime << std::endl;
+    // std::cout << "GFLOPS (CRS): " << GFLOPS << std::endl; 
 
     return GFLOPS;
 }

@@ -11,11 +11,11 @@
 
 int main()
 {
-    std::string filepath = "/mnt/beegfs/home/s425500/small_scale/Assignment/sparse-matrix/bcsstk17.mtx";
-    int k = 3; // Number of values in the vector
-    int testNumber = 10;
-    int numThreads = 16; // Number of threads to use
-    int chunkSize = 32;  // Chunk size for the OpenMP parallel for
+    std::string filepath = "/mnt/beegfs/home/s425500/small_scale/Assignment/sparse-matrix/bcsstk17.mtx"; // Path to the matrix file
+    int k = 3;                                                                                           // Number of values in the vector
+    int testNumber = 10;                                                                                 // Number of tests to perform
+    int numThreads = 16;                                                                                 // Number of threads to use
+    int chunkSize = 32;                                                                                  // Chunk size for the OpenMP parallel for
 
     try
     {

@@ -5,16 +5,19 @@
 #include <cuda_runtime.h>
 #include <iostream>
 #include <vector>
-#include <numeric>   // For std::accumulate
-#include <algorithm> // For std::sort
+#include <numeric>   
+#include <algorithm> 
 
 /**
- * @brief Function to execute the sparse matrix-dense vector multiplication using sequential algorithm
+ * @brief Perform matrix-vector product using CUDA
  *
- * @param sparseMatrix  Sparse matrix
- * @param fatVector Fat vector
- * @param vecCols  Number of columns in the dense vector
- * @return FatVector Result of the multiplication
+ * @param sparseMatrix Sparse matrix in CRS format
+ * @param fatVector Input vector
+ * @param result Output vector
+ * @param testNumber Number of invocations
+ * @param xBlockSize X-dimension of the block
+ * @param yBlockSize Y-dimension of the block
+ * @return double Performance in GFLOPS
  */
 double matrixMultivectorProductCRSCUDA(const SparseMatrixCRS &sparseMatrix, const FatVector &fatVector, FatVector &result, const int testNumber, const int xBlockSize, const int yBlockSize);
 

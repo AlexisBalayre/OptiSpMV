@@ -12,10 +12,10 @@
 int main()
 {
     std::string filepath = "/mnt/beegfs/home/s425500/small_scale/Assignment/sparse-matrix/dc1.mtx"; // Path to the matrix file
-    int k = 3;                                                                                            // Number of columns in the fat vector
-    int testNumber = 10;                                                                                   // Number of iterations for the test 
-    int xBlockSize = 64;                                                                                     // Number of threads in the x direction
-    int yBlockSize = 16;                                                                                     // Number of threads in the y direction
+    int k = 3;                                                                                      // Number of columns in the fat vector
+    int testNumber = 10;                                                                            // Number of iterations for the test
+    int xBlockSize = 64;                                                                            // Number of threads in the x direction
+    int yBlockSize = 16;                                                                            //                                                                                     // Number of threads in the y direction
 
     try
     {
@@ -64,7 +64,7 @@ int main()
         else
         {
             std::cout << "CRS results are not equal.\n";
-        } 
+        }
 
         if (areMatricesEqual(resultELLPACK, resultELLPACKCUDA, 1e-6))
         {

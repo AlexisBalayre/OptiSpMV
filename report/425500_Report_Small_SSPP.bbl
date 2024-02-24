@@ -1,12 +1,3 @@
-\begin{thebibliography}{1}
-
-\bibitem{petsc-web-page}
-Balay S, Abhyankar S, Adams MF, Benson S, Brown J, Brune P, et~al.. {PETS}c {W}eb page; 2023.
-\newblock \url{https://petsc.org/}.
-\newblock Available at: \url{https://petsc.org/}. (Accessed: December 28, 2023).
-
-\bibitem{Lugowski2023FastMatrixMarket}
-Lugowski A. fast matrix market: Fast and Full-Featured Matrix Market I/O Library; 2023.
-\newblock Available at: \url{https://github.com/alugowski/fast_matrix_market}. (Accessed: December 28, 2023).
+\begin{thebibliography}{}
 
 \end{thebibliography}

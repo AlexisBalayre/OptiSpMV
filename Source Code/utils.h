@@ -25,22 +25,28 @@
 bool areMatricesEqual(const FatVector &mat1, const FatVector &mat2, double tolerance);
 
 /**
- * Method to read a matrix from a Matrix Market file
- * @param filename Name of the file
- * @return SparseMatrixCRS Sparse matrix
+ * @brief Read a matrix from a Matrix Market file
+ *
+ * @param filename Filepath to the Matrix Market file
+ * @param matrix Sparse matrix in CRS format (output)
  */
 void readMatrixMarketFile(const std::string &filename, SparseMatrixCRS &matrix);
 
 /**
- * Method to generate a random fat vector
- * @param n Number of rows
- * @param m Number of columns
- * @return FatVector Fat vector
+ * @brief Generate a fat vector
+ *
+ * @param fatVector Pointer to the fat vector
+ * @param numRows Number of rows in the fat vector
+ * @param numCols Number of columns in the fat vector
  */
 void generateFatVector(FatVector &fatVector, int numRows, int numCols);
 
+/**
+ * @brief Perform the matrix-vector multiplication for a CRS matrix
+ *
+ * @param crsMatrix Sparse matrix in CRS format
+ * @param ellpackMatrix Pointer to the ELLPACK matrix (output)
+ */
 void convertCRStoELLPACK(const SparseMatrixCRS &crsMatrix, SparseMatrixELLPACK &ellpackMatrix);
-
-
 
 #endif
