@@ -580,7 +580,7 @@ Table~\ref{tab:matrix_summary}.
         olafu                & 16146      & 1015156     & 62.9             & 89               & True               \\ \hline
         af23560              & 23560      & 484256      & 20.6             & 21               & False              \\ \hline
     \end{tabular}
-    \caption{Summary of sparse matrices}
+    \caption{Summary of sparse matrices~\cite{10.1145/3017994}}
     \label{tab:matrix_summary}
 \end{table}
 %TC:endignore
@@ -1068,164 +1068,179 @@ engineering applications that depend on these intensive computations.
     \section{Project tree}
     \begin{lstlisting}[breaklines=true, basicstyle=\small]
     Source Code/
+        CRS/
+            matrixMultivectorProductCRS.cpp
+            matrixMultivectorProductCRS.h
+            matrixMultivectorProductCRSCUDA.cu
+            matrixMultivectorProductCRSCUDA.h
+            matrixMultivectorProductCRSOpenMP.cpp
+            matrixMultivectorProductCRSOpenMP.h
+        ELLPACK/
+            matrixMultivectorProductELLPACK.cpp
+            matrixMultivectorProductELLPACK.h
+            matrixMultivectorProductELLPACKCUDA.cu
+            matrixMultivectorProductELLPACKCUDA.h
+            matrixMultivectorProductELLPACKOpenMP.cpp
+            matrixMultivectorProductELLPACKOpenMP.h
         scripts/
-            batch_test.sh
-            get_csv_all.sh
-            get_csv_debug.sh
-            get_csv_specific.sh
-            mpi.sub
+            cuda.sub
+            openMP.sub
+            parseCudaResults.sh
+            parseOpenMPResults.sh
+        cudaUtils.cuh
+        makefile
         MatrixDefinitions.h
-        SparseMatrixFatVectorMultiply.h
-        SparseMatrixFatVectorMultiply.cpp
-        SparseMatrixFatVectorMultiplyRowWise.h
-        SparseMatrixFatVectorMultiplyRowWise.cpp
-        SparseMatrixFatVectorMultiplyColumnWise.h
-        SparseMatrixFatVectorMultiplyColumnWise.cpp
-        SparseMatrixFatVectorMultiplyNonZeroElement.h
-        SparseMatrixFatVectorMultiplyNonZeroElement.cpp
+        runCuda.cpp
+        runOpenMP.cpp
         utils.h
         utils.cpp
-        main.cpp
     results/
-        fat_vector_dim/
-            <sparse_matrix>_<k>_<metric>.png
-        matrix_dim/
-            <sparse_matrix>_<k>_<metric>.png
+        images/
+        CUDA.csv
+        CUDA.ipynb
+        OpenMP.csv
+        OpenMP.ipynb
     \end{lstlisting}
 
     \section{Getting Started}
     To run the program, follow these steps:
     \begin{enumerate}
         \itemindent=17.87pt
-        \item Install the required libraries:
-              \href{https://docs.open-mpi.org/en/main/installing-open-mpi/quickstart.html}{mpi}
-              \& \href{https://petsc.org/release/install/}{petsc}
-        \item Compile the main program using the following command:
-              \begin{lstlisting}[style=bashstyle]
-                mmpicxx -o <executable_name> -I${PETSC_DIR}/include -I${PETSC_DIR}/${PETSC_ARCH}/include -L${PETSC_DIR}/${PETSC_ARCH}/lib -lpetsc SparseMatrixFatVectorMultiply.cpp  main_verify.cpp utils.cpp SparseMatrixFatVectorMultiplyColumnWise.cpp SparseMatrixFatVectorMultiplyNonZeroElement.cpp SparseMatrixFatVectorMultiplyRowWise.cpp
-            \end{lstlisting}
-        \item Run the program using the following command:
-              \begin{lstlisting}[style=bashstyle]
-                mpirun -np <number_of_processes> <executable_name> <k> <sparse_matrix_file_pathw>
-            \end{lstlisting}
+        \item Install the required compilers and libraries:
+              \begin{itemize}
+                  \item \textbf{OpenMP:} Install the GNU Compiler Collection (GCC) and OpenMP~\cite{GCC}.
+                  \item \textbf{CUDA:} Install the NVIDIA CUDA Toolkit~\cite{CUDA}.
+              \end{itemize}
+        \item Compile the files using the following command: \texttt{make all}.
+        \item Run the programs:
+              \begin{itemize}
+                  \item \textbf{OpenMP:} \texttt{./runOpenMP.o}
+                  \item  \textbf{CUDA:} \texttt{./runCuda.o}
+              \end{itemize}
     \end{enumerate}
 
     \section{Methods Overview}
     \subsection{Utils.h}
-    \subsubsection{ConvertPETScMatToFatVector}
-
-    \textbf{Description:} Converts a PETSc matrix to a FatVector stucture.\\
+    \subsubsection{convertCRStoELLPACK}
+    \textbf{Description:} Read a sparse matrix from a Matrix Market file.\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{Mat C} - PETSc matrix to be converted.
+        \item \texttt{SparseMatrixCRS \&crsMatrix}: The CRS matrix to convert.
+        \item \texttt{SparseMatrixELLPACK \&ellpackMatrix}: The ELLPACK matrix to convert to.
     \end{itemize}
-
-    \textbf{Returns:} \texttt{FatVector} - Fat vector representation of the PETSc matrix.
 
     \subsubsection{areMatricesEqual}
     \textbf{Description:} Compares two matrices for equality within a specified tolerance.\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{FatVector \&mat1} - First matrix.
-        \item \texttt{FatVector \&mat2} - Second matrix.
-        \item \texttt{double tolerance} - Tolerance for comparison.
+        \item \texttt{FatVector \&mat1}: First matrix.
+        \item \texttt{FatVector \&mat2}: Second matrix.
+        \item \texttt{double tolerance}: Tolerance for comparison.
     \end{itemize}
 
-    \textbf{Returns:} \texttt{bool} - True if matrices are equal within the tolerance, false otherwise.
+    \textbf{Returns:} \texttt{bool}: True if matrices are equal within the tolerance, false otherwise.
 
     \subsubsection{readMatrixMarketFile}
     \textbf{Description:} Reads a matrix from a Matrix Market file into a sparse matrix format.\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{std::string \&filename} - Name of the Matrix Market file.
+        \item \texttt{std::string \&filename}: Name of the Matrix Market file.
+        \item \texttt{SparseMatrixCRS \&matrix}: Sparse matrix to read into.
     \end{itemize}
-
-    \textbf{Returns:} \texttt{SparseMatrix} - Sparse matrix read from the file.
 
     \subsubsection{generateLargeFatVector}
     \textbf{Description:} Generates a random Fat Vector with specified dimensions.\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{int n} - Number of rows.
-        \item \texttt{int k} - Number of columns.
+        \item \texttt{FatVector \&fatVector}: Fat vector to generate.
+        \item \texttt{int n}: Number of rows.
+        \item \texttt{int k}: Number of columns.
     \end{itemize}
 
-    \textbf{Returns:} \texttt{FatVector} - Generated fat vector.
-
-    \subsubsection{serialize and deserialize}
-    \textbf{Description:} Serializes and deserializes a FatVector to and from a flat array, respectively.\\
-
-    \textbf{Parameters for serialize:}
-    \begin{itemize}
-        \item \texttt{FatVector \&fatVec} - fat vector to serialize.
-    \end{itemize}
-
-    \textbf{Returns:} \texttt{std::vector<double>} - Flat array containing the serialized data.\\
-
-    \textbf{Parameters for deserialize:}
-    \begin{itemize}
-        \item \texttt{std::vector<double> \&flat} - Flat array to deserialize.
-        \item \texttt{int rows} - Number of rows in the fat vector.
-        \item \texttt{int cols} - Number of columns in the fat vector.
-    \end{itemize}
-
-    \textbf{Returns:} \texttt{FatVector} - Deserialized fat vector.
-
-    \subsection{SparseMatrixFatVectorMultiply.h}
-    \subsubsection{sparseMatrixFatVectorMultiply}
-    \textbf{Description:} Executes the multiplication using a sequential algorithm.\\
+    \subsection{matrixMultivectorProductCRS.h}
+    \subsubsection{matrixMultivectorProductCRS}
+    \textbf{Description:} Perform the matrix-vector multiplication in the CRS format.\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{SparseMatrix \&sparseMatrix} - The sparse matrix.
-        \item \texttt{FatVector \&fatVector} - The Fat Vector.
-        \item \texttt{int vecCols} - Number of columns in the Fat Vector.
+        \item \texttt{SparseMatrixCRS \&sparseMatrix}: Sparse matrix in CRS format.
+        \item \texttt{FatVector \&fatVector}: Fat vector.
+        \item \texttt{FatVector \&result}: Result of the multiplication.
+        \item \texttt{int testNumber}: Number of iterations for the performance measurement
     \end{itemize}
 
-    \textbf{Returns:} \texttt{FatVector} - Result of the multiplication.
-
-    \subsection{SparseMatrixFatVectorMultiplyRowWise.h}
-    \subsubsection{sparseMatrixFatVectorMultiplyRowWise}
-    \textbf{Description:} Multiplies a sparse matrix with a Fat Vector using row-wise distribution.\\
+    \subsection{matrixMultivectorProductCRSOpenMP.h}
+    \subsubsection{matrixMultivectorProductCRSOpenMP}
+    \textbf{Description:} Perform the matrix-vector multiplication in the CRS format using OpenMP\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{SparseMatrix \&sparseMatrix} - The sparse matrix.
-        \item \texttt{FatVector \&fatVector} - The Fat Vector.
-        \item \texttt{int vecCols} - Number of columns in the Fat Vector.
+        \item \texttt{SparseMatrixCRS \&sparseMatrix}: Sparse matrix in CRS format.
+        \item \texttt{FatVector \&fatVector}: Fat vector.
+        \item \texttt{FatVector \&result}: Result of the multiplication.
+        \item \texttt{int testNumber}: Number of iterations for the performance measurement
+        \item \texttt{int numThreads}: Number of threads to use.
+        \item \texttt{int chunkSize}: Chunk size for the parallelization.
     \end{itemize}
 
-    \textbf{Returns:} \texttt{FatVector} - Result of the multiplication.
-
-    \subsection{SparseMatrixFatVectorMultiplyColumnWise.h}
-    \subsubsection{sparseMatrixFatVectorMultiplyColumnWise}
-    \textbf{Description:} Executes the multiplication using column-wise parallel algorithm.\\
+    \subsection{matrixMultivectorProductCRSCUDA.h}
+    \subsubsection{matrixMultivectorProductCRSCUDA}
+    \textbf{Description:} Perform the matrix-vector multiplication in the CRS format using CUDA\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{SparseMatrix \&sparseMatrix} - The sparse matrix.
-        \item \texttt{FatVector \&fatVector} - The Fat Vector.
-        \item \texttt{int vecCols} - Number of columns in the Fat Vector.
+        \item \texttt{SparseMatrixCRS \&sparseMatrix}: Sparse matrix in CRS format.
+        \item \texttt{FatVector \&fatVector}: Fat vector.
+        \item \texttt{FatVector \&result}: Result of the multiplication.
+        \item \texttt{int testNumber}: Number of iterations for the performance measurement
+        \item \texttt{int xBlockSize}: X block size for the parallelization.
+        \item \texttt{int yBlockSize}: Y block size for the parallelization.
     \end{itemize}
 
-    \textbf{Returns:} \texttt{FatVector} - Result of the multiplication.
-
-    \subsection{SparseMatrixFatVectorMultiplyNonZeroElement.h}
-    \subsubsection{sparseMatrixFatVectorMultiplyNonZeroElement}
-    \textbf{Description:} Executes the multiplication using non-zero element parallel algorithm.\\
+    \subsection{matrixMultivectorProductELLPACK.h}
+    \subsubsection{matrixMultivectorProductELLPACK}
+    \textbf{Description:} Perform the matrix-vector multiplication in the ELLPACK format.\\
 
     \textbf{Parameters:}
     \begin{itemize}
-        \item \texttt{SparseMatrix \&sparseMatrix} - The sparse matrix.
-        \item \texttt{FatVector \&fatVector} - The Fat Vector.
-        \item \texttt{int vecCols} - Number of columns in the Fat Vector.
+        \item \texttt{SparseMatrixELLPACK \&sparseMatrix}: Sparse matrix in ELLPACK format.
+        \item \texttt{FatVector \&fatVector}: Fat vector.
+        \item \texttt{FatVector \&result}: Result of the multiplication.
+        \item \texttt{int testNumber}: Number of iterations for the performance measurement
     \end{itemize}
 
-    \textbf{Returns:} \texttt{FatVector} - Result of the multiplication.
+    \subsection{matrixMultivectorProductELLPACKOpenMP.h}
+    \subsubsection{matrixMultivectorProductELLPACKOpenMP}
+    \textbf{Description:} Perform the matrix-vector multiplication in the ELLPACK format using OpenMP\\
+
+    \textbf{Parameters:}
+    \begin{itemize}
+        \item \texttt{SparseMatrixELLPACK \&sparseMatrix}: Sparse matrix in ELLPACK format.
+        \item \texttt{FatVector \&fatVector}: Fat vector.
+        \item \texttt{FatVector \&result}: Result of the multiplication.
+        \item \texttt{int testNumber}: Number of iterations for the performance measurement
+        \item \texttt{int numThreads}: Number of threads to use.
+        \item \texttt{int chunkSize}: Chunk size for the parallelization.
+    \end{itemize}
+
+    \subsection{matrixMultivectorProductELLPACKCUDA.h}
+    \subsubsection{matrixMultivectorProductELLPACKCUDA}
+    \textbf{Description:} Perform the matrix-vector multiplication in the ELLPACK format using CUDA\\
+
+    \textbf{Parameters:}
+    \begin{itemize}
+        \item \texttt{SparseMatrixELLPACK \&sparseMatrix}: Sparse matrix in ELLPACK format.
+        \item \texttt{FatVector \&fatVector}: Fat vector.
+        \item \texttt{FatVector \&result}: Result of the multiplication.
+        \item \texttt{int testNumber}: Number of iterations for the performance measurement
+        \item \texttt{int xBlockSize}: X block size for the parallelization.
+        \item \texttt{int yBlockSize}: Y block size for the parallelization.
+    \end{itemize}
+
 
 \end{subappendices}
 

@@ -105,7 +105,7 @@ void readMatrixMarketFile(const std::string &filename, SparseMatrixCRS &matrix)
 }
 
 /**
- * @brief Perform the matrix-vector multiplication for a CRS matrix
+ * @brief Convert a CRS matrix to ELLPACK format
  *
  * @param crsMatrix Sparse matrix in CRS format
  * @param ellpackMatrix Pointer to the ELLPACK matrix (output)
