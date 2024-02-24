@@ -1,7 +1,7 @@
 \contentsline {chapter}{Abstract}{ii}{chapter*.1}%
 \contentsline {chapter}{Table of Contents}{iii}{chapter*.2}%
-\contentsline {chapter}{List of Figures}{v}{chapter*.3}%
-\contentsline {chapter}{List of Tables}{vi}{chapter*.4}%
+\contentsline {chapter}{List of Figures}{vi}{chapter*.3}%
+\contentsline {chapter}{List of Tables}{vii}{chapter*.4}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Methodology}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Problem Statement}{2}{section.2.1}%
@@ -68,3 +68,16 @@
 \contentsline {subsubsection}{\numberline {A.C.5.1}sparseMatrixFatVectorMultiplyNonZeroElement}{36}{subsubsection.1.A.C.5.1}%
 \contentsline {chapter}{\numberline {B}Source Codes}{37}{appendix.B}%
 \contentsline {section}{\numberline {B.A}Data Structures}{37}{section.2.B.A}%
+\contentsline {section}{\numberline {B.B}Sequential Algorithm}{39}{section.2.B.B}%
+\contentsline {subsection}{\numberline {B.B.1}CRS Format}{39}{subsection.2.B.B.1}%
+\contentsline {subsection}{\numberline {B.B.2}ELLPACK Format}{40}{subsection.2.B.B.2}%
+\contentsline {section}{\numberline {B.C}OpenMP Parallel Algorithm}{42}{section.2.B.C}%
+\contentsline {subsection}{\numberline {B.C.1}CRS Format}{42}{subsection.2.B.C.1}%
+\contentsline {subsection}{\numberline {B.C.2}ELLPACK Format}{43}{subsection.2.B.C.2}%
+\contentsline {section}{\numberline {B.D}CUDA Parallel Algorithm}{45}{section.2.B.D}%
+\contentsline {subsection}{\numberline {B.D.1}CRS Format}{45}{subsection.2.B.D.1}%
+\contentsline {subsection}{\numberline {B.D.2}ELLPACK Format}{47}{subsection.2.B.D.2}%
+\contentsline {section}{\numberline {B.E}Utilities}{51}{section.2.B.E}%
+\contentsline {section}{\numberline {B.F}Main Program}{54}{section.2.B.F}%
+\contentsline {subsection}{\numberline {B.F.1}OpenMP}{54}{subsection.2.B.F.1}%
+\contentsline {subsection}{\numberline {B.F.2}CUDA}{57}{subsection.2.B.F.2}%

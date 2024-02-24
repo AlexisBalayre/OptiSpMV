@@ -1232,7 +1232,45 @@ engineering applications that depend on these intensive computations.
 \chapter{Source Codes}
 \begin{subappendices}
     \section{Data Structures}\label{appendix:data-structures}
-    Data stuctures of the sparse matrix and fat vector.
+    Data stuctures of the sparse matrix in the CRS and ELLPACK formats, as well as
+    the FatVector structure. \lstinputlisting[style=cstyle]{../Source
+        Code/MatrixDefinitions.h}
+
+    \newpage
+    \section{Sequential Algorithm}\label{appendix:sequential}
+    \subsection{CRS Format}\label{appendix:crs-sequential}
+    \lstinputlisting[style=cstyle]{../Source Code/CRS/matrixMultivectorProductCRS.cpp}
+
+    \subsection{ELLPACK Format}\label{appendix:ellpack-sequential}
+    \lstinputlisting[style=cstyle]{../Source Code/ELLPACK/matrixMultivectorProductELLPACK.cpp}
+
+    \newpage
+    \section{OpenMP Parallel Algorithm}\label{appendix:openmp}
+    \subsection{CRS Format}\label{appendix:crs-openmp}
+    \lstinputlisting[style=cstyle]{../Source Code/CRS/matrixMultivectorProductCRSOpenMP.cpp}
+
+    \subsection{ELLPACK Format}\label{appendix:ellpack-openmp}
+    \lstinputlisting[style=cstyle]{../Source Code/ELLPACK/matrixMultivectorProductELLPACKOpenMP.cpp}
+
+    \newpage
+    \section{CUDA Parallel Algorithm}\label{appendix:cuda}
+    \subsection{CRS Format}\label{appendix:crs-cuda}
+    \lstinputlisting[style=cstyle]{../Source Code/CRS/matrixMultivectorProductCRSCUDA.cu}
+
+    \subsection{ELLPACK Format}\label{appendix:ellpack-cuda}
+    \lstinputlisting[style=cstyle]{../Source Code/ELLPACK/matrixMultivectorProductELLPACKCUDA.cu}
+
+    \newpage
+    \section{Utilities}\label{appendix:utilities}
+    \lstinputlisting[style=cstyle]{../Source Code/utils.cpp}
+
+    \newpage
+    \section{Main Program}\label{appendix:main}
+    \subsection{OpenMP}\label{appendix:openmp-main}
+    \lstinputlisting[style=cstyle]{../Source Code/runOpenMP.cpp}
+
+    \subsection{CUDA}\label{appendix:cuda-main}
+    \lstinputlisting[style=cstyle]{../Source Code/runCuda.cpp}
 
 \end{subappendices}
 %TC:endignore 

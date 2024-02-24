@@ -9,12 +9,15 @@
 #include "../MatrixDefinitions.h"
 
 /**
- * @brief Function to execute the sparse matrix-dense vector multiplication using sequential algorithm
+ * @brief Perform the matrix-vector multiplication for an ELLPACK matrix using OpenMP
  *
- * @param sparseMatrix  Sparse matrix
- * @param fatVector Fat vector
- * @param vecCols  Number of columns in the dense vector
- * @return FatVector Result of the multiplication
+ * @param sparseMatrix Sparse matrix in ELLPACK format
+ * @param fatVector Dense vector
+ * @param result Pointer to the result vector
+ * @param testNumber Number of iterations for the performance measurement
+ * @param numThreads Number of threads to use
+ * @param chunkSize Chunk size for the OpenMP parallel for
+ * @return double GFLOPS Performance of the kernel in GFLOPS
  */
 double matrixMultivectorProductELLPACKOpenMP(const SparseMatrixELLPACK &sparseMatrix,
                                              const FatVector &fatVector, FatVector &result, const int testNumber, const int numThreads, const int chunkSize);

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.14)  24 FEB 2024 11:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.14)  24 FEB 2024 14:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -743,22 +743,22 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
  [3
 
 
-])
+] [4])
 \tf@toc=\write4
 \openout4 = `425500_Report_Small_SSPP.toc'.
 
- [4] (./425500_Report_Small_SSPP.lof)
+ [5] (./425500_Report_Small_SSPP.lof)
 \tf@lof=\write5
 \openout5 = `425500_Report_Small_SSPP.lof'.
 
- [5
+ [6
 
 
 ] (./425500_Report_Small_SSPP.lot)
 \tf@lot=\write6
 \openout6 = `425500_Report_Small_SSPP.lot'.
 
- [6
+ [7
 
 ]
 Chapter 1.
@@ -773,11 +773,8 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [2
 
 ] [3]
-
-LaTeX Warning: Reference `appendix:sequential' on page 4 undefined on input line 260.
-
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 266.
-[4] [5] [6] [7]
+ [4] [5] [6] [7]
 Overfull \hbox (9.31679pt too wide) in paragraph at lines 386--391
 []\OT1/ptm/m/n/12 OpenMP pro-vides a pow-er-ful frame-work for par-al-lelis-ing com-pu-ta-tional tasks in shared-
  []
@@ -812,114 +809,114 @@ Chapter 3.
 [15
 
 ]
-<../results/images/openMP_ChunkSize_CRS.png, id=367, 578.16pt x 578.16pt>
+<../results/images/openMP_ChunkSize_CRS.png, id=398, 578.16pt x 578.16pt>
 File: ../results/images/openMP_ChunkSize_CRS.png Graphic file (type png)
 <use ../results/images/openMP_ChunkSize_CRS.png>
 Package pdftex.def Info: ../results/images/openMP_ChunkSize_CRS.png  used on input line 676.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
-<../results/images/openMP_ChunkSize_ELLPACK.png, id=368, 578.16pt x 578.16pt>
+<../results/images/openMP_ChunkSize_ELLPACK.png, id=399, 578.16pt x 578.16pt>
 File: ../results/images/openMP_ChunkSize_ELLPACK.png Graphic file (type png)
 <use ../results/images/openMP_ChunkSize_ELLPACK.png>
 Package pdftex.def Info: ../results/images/openMP_ChunkSize_ELLPACK.png  used on input line 683.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
  [16 <../results/images/openMP_ChunkSize_CRS.png>]
-<../results/images/openMP_Threads_CRS.png, id=376, 578.16pt x 578.16pt>
+<../results/images/openMP_Threads_CRS.png, id=407, 578.16pt x 578.16pt>
 File: ../results/images/openMP_Threads_CRS.png Graphic file (type png)
 <use ../results/images/openMP_Threads_CRS.png>
 Package pdftex.def Info: ../results/images/openMP_Threads_CRS.png  used on input line 698.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
  [17 <../results/images/openMP_ChunkSize_ELLPACK.png>]
-<../results/images/openMP_Threads_ELLPACK.png, id=382, 578.16pt x 578.16pt>
+<../results/images/openMP_Threads_ELLPACK.png, id=413, 578.16pt x 578.16pt>
 File: ../results/images/openMP_Threads_ELLPACK.png Graphic file (type png)
 <use ../results/images/openMP_Threads_ELLPACK.png>
 Package pdftex.def Info: ../results/images/openMP_Threads_ELLPACK.png  used on input line 705.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
  [18 <../results/images/openMP_Threads_CRS.png> <../results/images/openMP_Threads_ELLPACK.png>]
-<../results/images/openMP_Performance_k1.png, id=391, 1011.78pt x 722.7pt>
+<../results/images/openMP_Performance_k1.png, id=423, 1011.78pt x 722.7pt>
 File: ../results/images/openMP_Performance_k1.png Graphic file (type png)
 <use ../results/images/openMP_Performance_k1.png>
 Package pdftex.def Info: ../results/images/openMP_Performance_k1.png  used on input line 719.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
-<../results/images/openMP_Performance_k2.png, id=392, 1011.78pt x 722.7pt>
+<../results/images/openMP_Performance_k2.png, id=424, 1011.78pt x 722.7pt>
 File: ../results/images/openMP_Performance_k2.png Graphic file (type png)
 <use ../results/images/openMP_Performance_k2.png>
 Package pdftex.def Info: ../results/images/openMP_Performance_k2.png  used on input line 726.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
  [19 <../results/images/openMP_Performance_k1.png>]
-<../results/images/openMP_Performance_k3.png, id=399, 1011.78pt x 722.7pt>
+<../results/images/openMP_Performance_k3.png, id=431, 1011.78pt x 722.7pt>
 File: ../results/images/openMP_Performance_k3.png Graphic file (type png)
 <use ../results/images/openMP_Performance_k3.png>
 Package pdftex.def Info: ../results/images/openMP_Performance_k3.png  used on input line 733.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
-<../results/images/openMP_Performance_k6.png, id=400, 1011.78pt x 722.7pt>
+<../results/images/openMP_Performance_k6.png, id=432, 1011.78pt x 722.7pt>
 File: ../results/images/openMP_Performance_k6.png Graphic file (type png)
 <use ../results/images/openMP_Performance_k6.png>
 Package pdftex.def Info: ../results/images/openMP_Performance_k6.png  used on input line 740.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
  [20 <../results/images/openMP_Performance_k2.png> <../results/images/openMP_Performance_k3.png>] [21 <../results/images/openMP_Performance_k6.png>]
-<../results/images/CUDA_xBlockSize_CRS.png, id=413, 578.16pt x 578.16pt>
+<../results/images/CUDA_xBlockSize_CRS.png, id=445, 578.16pt x 578.16pt>
 File: ../results/images/CUDA_xBlockSize_CRS.png Graphic file (type png)
 <use ../results/images/CUDA_xBlockSize_CRS.png>
 Package pdftex.def Info: ../results/images/CUDA_xBlockSize_CRS.png  used on input line 817.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
  [22]
-<../results/images/CUDA_xBlockSize_ELLPACK.png, id=419, 578.16pt x 578.16pt>
+<../results/images/CUDA_xBlockSize_ELLPACK.png, id=450, 578.16pt x 578.16pt>
 File: ../results/images/CUDA_xBlockSize_ELLPACK.png Graphic file (type png)
 <use ../results/images/CUDA_xBlockSize_ELLPACK.png>
 Package pdftex.def Info: ../results/images/CUDA_xBlockSize_ELLPACK.png  used on input line 824.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
-<../results/images/CUDA_yBlockSize_CRS.png, id=420, 578.16pt x 578.16pt>
+<../results/images/CUDA_yBlockSize_CRS.png, id=451, 578.16pt x 578.16pt>
 File: ../results/images/CUDA_yBlockSize_CRS.png Graphic file (type png)
 <use ../results/images/CUDA_yBlockSize_CRS.png>
 Package pdftex.def Info: ../results/images/CUDA_yBlockSize_CRS.png  used on input line 833.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
  [23 <../results/images/CUDA_xBlockSize_CRS.png> <../results/images/CUDA_xBlockSize_ELLPACK.png>]
-<../results/images/CUDA_yBlockSize_ELLPACK.png, id=427, 578.16pt x 578.16pt>
+<../results/images/CUDA_yBlockSize_ELLPACK.png, id=458, 578.16pt x 578.16pt>
 File: ../results/images/CUDA_yBlockSize_ELLPACK.png Graphic file (type png)
 <use ../results/images/CUDA_yBlockSize_ELLPACK.png>
 Package pdftex.def Info: ../results/images/CUDA_yBlockSize_ELLPACK.png  used on input line 840.
 (pdftex.def)             Requested size: 256.07741pt x 256.07619pt.
-<../results/images/CUDA_Performance_k1.png, id=428, 1011.78pt x 722.7pt>
+<../results/images/CUDA_Performance_k1.png, id=459, 1011.78pt x 722.7pt>
 File: ../results/images/CUDA_Performance_k1.png Graphic file (type png)
 <use ../results/images/CUDA_Performance_k1.png>
 Package pdftex.def Info: ../results/images/CUDA_Performance_k1.png  used on input line 849.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
  [24 <../results/images/CUDA_yBlockSize_CRS.png> <../results/images/CUDA_yBlockSize_ELLPACK.png>]
-<../results/images/CUDA_Performance_k2.png, id=435, 1011.78pt x 722.7pt>
+<../results/images/CUDA_Performance_k2.png, id=467, 1011.78pt x 722.7pt>
 File: ../results/images/CUDA_Performance_k2.png Graphic file (type png)
 <use ../results/images/CUDA_Performance_k2.png>
 Package pdftex.def Info: ../results/images/CUDA_Performance_k2.png  used on input line 856.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
-<../results/images/CUDA_Performance_k3.png, id=436, 1011.78pt x 722.7pt>
+<../results/images/CUDA_Performance_k3.png, id=468, 1011.78pt x 722.7pt>
 File: ../results/images/CUDA_Performance_k3.png Graphic file (type png)
 <use ../results/images/CUDA_Performance_k3.png>
 Package pdftex.def Info: ../results/images/CUDA_Performance_k3.png  used on input line 863.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
  [25 <../results/images/CUDA_Performance_k1.png> <../results/images/CUDA_Performance_k2.png>]
-<../results/images/CUDA_Performance_k6.png, id=444, 1011.78pt x 722.7pt>
+<../results/images/CUDA_Performance_k6.png, id=475, 1011.78pt x 722.7pt>
 File: ../results/images/CUDA_Performance_k6.png Graphic file (type png)
 <use ../results/images/CUDA_Performance_k6.png>
 Package pdftex.def Info: ../results/images/CUDA_Performance_k6.png  used on input line 870.
 (pdftex.def)             Requested size: 384.1096pt x 274.36418pt.
  [26 <../results/images/CUDA_Performance_k3.png> <../results/images/CUDA_Performance_k6.png>]
-<../results/images/OpenMP_vs_CUDA_Performance_k1.png, id=451, 1011.78pt x 722.7pt>
+<../results/images/OpenMP_vs_CUDA_Performance_k1.png, id=482, 1011.78pt x 722.7pt>
 File: ../results/images/OpenMP_vs_CUDA_Performance_k1.png Graphic file (type png)
 <use ../results/images/OpenMP_vs_CUDA_Performance_k1.png>
 Package pdftex.def Info: ../results/images/OpenMP_vs_CUDA_Performance_k1.png  used on input line 940.
 (pdftex.def)             Requested size: 341.43437pt x 243.88417pt.
  [27]
-<../results/images/OpenMP_vs_CUDA_Performance_k2.png, id=456, 1011.78pt x 722.7pt>
+<../results/images/OpenMP_vs_CUDA_Performance_k2.png, id=487, 1011.78pt x 722.7pt>
 File: ../results/images/OpenMP_vs_CUDA_Performance_k2.png Graphic file (type png)
 <use ../results/images/OpenMP_vs_CUDA_Performance_k2.png>
 Package pdftex.def Info: ../results/images/OpenMP_vs_CUDA_Performance_k2.png  used on input line 947.
 (pdftex.def)             Requested size: 341.43437pt x 243.88417pt.
-<../results/images/OpenMP_vs_CUDA_Performance_k3.png, id=457, 1011.78pt x 722.7pt>
+<../results/images/OpenMP_vs_CUDA_Performance_k3.png, id=488, 1011.78pt x 722.7pt>
 File: ../results/images/OpenMP_vs_CUDA_Performance_k3.png Graphic file (type png)
 <use ../results/images/OpenMP_vs_CUDA_Performance_k3.png>
 Package pdftex.def Info: ../results/images/OpenMP_vs_CUDA_Performance_k3.png  used on input line 954.
 (pdftex.def)             Requested size: 298.75264pt x 213.39314pt.
  [28 <../results/images/OpenMP_vs_CUDA_Performance_k1.png> <../results/images/OpenMP_vs_CUDA_Performance_k2.png>]
-<../results/images/OpenMP_vs_CUDA_Performance_k6.png, id=464, 1011.78pt x 722.7pt>
+<../results/images/OpenMP_vs_CUDA_Performance_k6.png, id=495, 1011.78pt x 722.7pt>
 File: ../results/images/OpenMP_vs_CUDA_Performance_k6.png Graphic file (type png)
 <use ../results/images/OpenMP_vs_CUDA_Performance_k6.png>
 Package pdftex.def Info: ../results/images/OpenMP_vs_CUDA_Performance_k6.png  used on input line 961.
@@ -1024,28 +1021,188 @@ Underfull \hbox (badness 10000) in paragraph at lines 1219--1220
 
 [36]
 Appendix B.
-[37
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 1237.
+ (../Source Code/MatrixDefinitions.h [37
 
-] (./425500_Report_Small_SSPP.aux)
+]) [38] (../Source Code/CRS/matrixMultivectorProductCRS.cpp [39]) (../Source Code/ELLPACK/matrixMultivectorProductELLPACK.cpp [40]) [41] (../Source Code/CRS/matrixMultivectorProductCRSOpenMP.cpp [42]) (../Source Code/ELLPACK/matrixMultivectorProductELLPACKOpenMP.cpp [43]) [44] (../Source Code/CRS/matrixMultivectorProductCRSCUDA.cu [45]
+Overfull \hbox (215.42242pt too wide) in paragraph at lines 83--84
+[][] 
+ []
 
-LaTeX Warning: There were undefined references.
 
+Overfull \hbox (123.62039pt too wide) in paragraph at lines 86--87
+[][] 
+ []
+
+
+Overfull \hbox (149.12096pt too wide) in paragraph at lines 87--88
+[][] 
+ []
+
+
+Overfull \hbox (220.52254pt too wide) in paragraph at lines 89--90
+[][] 
+ []
+
+
+Overfull \hbox (108.32005pt too wide) in paragraph at lines 90--92
+[][] 
+ []
+
+[46]) (../Source Code/ELLPACK/matrixMultivectorProductELLPACKCUDA.cu [47] [48]
+Overfull \hbox (439.8274pt too wide) in paragraph at lines 83--84
+[][] 
+ []
+
+
+Overfull \hbox (179.72163pt too wide) in paragraph at lines 84--85
+[][] 
+ []
+
+
+Overfull \hbox (246.0231pt too wide) in paragraph at lines 85--86
+[][] 
+ []
+
+
+Overfull \hbox (348.02536pt too wide) in paragraph at lines 87--88
+[][] 
+ []
+
+
+Overfull \hbox (373.52592pt too wide) in paragraph at lines 88--89
+[][] 
+ []
+
+
+Overfull \hbox (444.9275pt too wide) in paragraph at lines 90--91
+[][] 
+ []
+
+
+Overfull \hbox (332.72502pt too wide) in paragraph at lines 91--93
+[][] 
+ []
+
+[49]) [50] (../Source Code/utils.cpp [51] [52]) [53] (../Source Code/runOpenMP.cpp [54]
+Overfull \hbox (128.7205pt too wide) in paragraph at lines 76--77
+[][] 
+ []
+
+
+Overfull \hbox (16.51802pt too wide) in paragraph at lines 77--78
+[][] 
+ []
+
+
+Overfull \hbox (189.92186pt too wide) in paragraph at lines 82--83
+[][] 
+ []
+
+
+Overfull \hbox (57.31892pt too wide) in paragraph at lines 83--84
+[][] 
+ []
+
+[55]
+Overfull \hbox (133.82062pt too wide) in paragraph at lines 92--93
+[][] 
+ []
+
+
+Overfull \hbox (317.42468pt too wide) in paragraph at lines 93--94
+[][] 
+ []
+
+
+Overfull \hbox (205.2222pt too wide) in paragraph at lines 94--95
+[][] 
+ []
+
+
+Overfull \hbox (174.62152pt too wide) in paragraph at lines 98--99
+[][] 
+ []
+
+
+Overfull \hbox (378.62604pt too wide) in paragraph at lines 99--100
+[][] 
+ []
+
+
+Overfull \hbox (246.0231pt too wide) in paragraph at lines 100--101
+[][] 
+ []
+
+[56]) (../Source Code/runCuda.cpp [57]
+Overfull \hbox (108.32005pt too wide) in paragraph at lines 70--71
+[][] 
+ []
+
+
+Overfull \hbox (169.52141pt too wide) in paragraph at lines 76--77
+[][] 
+ []
+
+
+Overfull \hbox (36.91847pt too wide) in paragraph at lines 77--78
+[][] 
+ []
+
+[58]
+Overfull \hbox (133.82062pt too wide) in paragraph at lines 89--90
+[][] 
+ []
+
+
+Overfull \hbox (317.42468pt too wide) in paragraph at lines 90--91
+[][] 
+ []
+
+
+Overfull \hbox (205.2222pt too wide) in paragraph at lines 91--92
+[][] 
+ []
+
+
+Overfull \hbox (174.62152pt too wide) in paragraph at lines 95--96
+[][] 
+ []
+
+
+Overfull \hbox (378.62604pt too wide) in paragraph at lines 96--97
+[][] 
+ []
+
+
+Overfull \hbox (246.0231pt too wide) in paragraph at lines 97--98
+[][] 
+ []
+
+[59]) [60] (./425500_Report_Small_SSPP.aux)
 Package rerunfilecheck Info: File `425500_Report_Small_SSPP.out' has not changed.
 (rerunfilecheck)             Checksum: B8CED4BFD157060B6080C094A4B3CC6A;1308.
  ) 
 Here is how much of TeX's memory you used:
- 19104 strings out of 476025
- 322093 string characters out of 5790016
- 1954388 words of memory out of 5000000
- 38974 multiletter control sequences out of 15000+600000
- 549504 words of font info for 111 fonts, out of 8000000 for 9000
+ 20754 strings out of 476025
+ 348819 string characters out of 5790016
+ 2408388 words of memory out of 5000000
+ 39501 multiletter control sequences out of 15000+600000
+ 551089 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,122p,573b,2355s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,122p,665b,2470s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 425500_Report_Small_SSPP.pdf (43 pages, 5584158 bytes).
+Output written on 425500_Report_Small_SSPP.pdf (67 pages, 5753710 bytes).
 PDF statistics:
- 637 PDF objects out of 1000 (max. 8388607)
- 524 compressed objects within 6 object streams
- 211 named destinations out of 1000 (max. 500000)
+ 2036 PDF objects out of 2073 (max. 8388607)
+ 1886 compressed objects within 19 object streams
+ 1291 named destinations out of 1440 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

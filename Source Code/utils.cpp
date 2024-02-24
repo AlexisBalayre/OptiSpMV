@@ -182,6 +182,6 @@ void generateFatVector(FatVector &fatVector, int numRows, int numCols)
 
     for (size_t i = 0; i < fatVector.values.size(); ++i)
     {
-        fatVector.values[i] = static_cast<double>(rand()) / RAND_MAX; // Valeurs aléatoires entre 0 et 1
+        fatVector.values[i] = static_cast<double>(rand()) / RAND_MAX; // Valeurs aleatoires entre 0 et 1
     }
 }
