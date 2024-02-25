@@ -11,45 +11,45 @@ Warning--empty author and editor in GCC
 Warning--missing publisher in GCC
 Warning--empty author and editor in CUDA
 Warning--missing publisher in CUDA
-You've used 3 entries,
+You've used 5 entries,
             3506 wiz_defined-function locations,
-            708 strings with 5240 characters,
-and the built_in function-call counts, 3530 in all, are:
-= -- 432
-> -- 24
-< -- 0
-+ -- 12
-- -- 6
-* -- 281
-:= -- 406
-add.period$ -- 9
-call.type$ -- 3
+            728 strings with 5826 characters,
+and the built_in function-call counts, 8927 in all, are:
+= -- 1039
+> -- 80
+< -- 42
++ -- 38
+- -- 17
+* -- 693
+:= -- 978
+add.period$ -- 19
+call.type$ -- 5
 change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 292
-empty$ -- 346
-format.name$ -- 7
-if$ -- 828
+chr.to.int$ -- 95
+cite$ -- 9
+duplicate$ -- 787
+empty$ -- 861
+format.name$ -- 18
+if$ -- 2101
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 23
-newline$ -- 17
-num.names$ -- 3
-pop$ -- 59
+int.to.str$ -- 5
+missing$ -- 48
+newline$ -- 29
+num.names$ -- 5
+pop$ -- 134
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 51
+skip$ -- 111
 stack$ -- 0
-substring$ -- 609
-swap$ -- 51
-text.length$ -- 0
+substring$ -- 1556
+swap$ -- 122
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 4
-while$ -- 17
-width$ -- 4
-write$ -- 35
+while$ -- 44
+width$ -- 6
+write$ -- 63
 (There were 4 warnings)

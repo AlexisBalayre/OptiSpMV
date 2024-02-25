@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex 425500_Report_Small_SSPP"] 1708806316 "425500_Report_Small_SSPP.aux" "425500_Report_Small_SSPP.bbl" "425500_Report_Small_SSPP" 1708806325 0
-  "./CUCitations.bib" 1708804840 3546 fb4f8184f8541cb245c60a63b1b3a26a ""
+["bibtex 425500_Report_Small_SSPP"] 1708855967 "425500_Report_Small_SSPP.aux" "425500_Report_Small_SSPP.bbl" "425500_Report_Small_SSPP" 1708855975 0
+  "./CUCitations.bib" 1708854478 3236 ce2d14163d58dec1d1c1a642376456ca ""
   "./CranfieldNumbered.bst" 1702630679 40883 e68dccfb69fb01c9688750392ebeb179 ""
-  "425500_Report_Small_SSPP.aux" 1708806325 24274 a8406213779d7b35b1917c283630ca09 "pdflatex"
+  "425500_Report_Small_SSPP.aux" 1708855975 24443 f8baddb2cbeeaf24e75561114df5f920 "pdflatex"
   (generated)
   "425500_Report_Small_SSPP.bbl"
   "425500_Report_Small_SSPP.blg"
   (rewritten before read)
-["pdflatex"] 1708806316 "/Users/alexis/Cranfield/Small Scall Parallele Programming/assigment/report/425500_Report_Small_SSPP.tex" "425500_Report_Small_SSPP.pdf" "425500_Report_Small_SSPP" 1708806325 0
+["pdflatex"] 1708855967 "/Users/alexis/Cranfield/Small Scall Parallele Programming/assigment/report/425500_Report_Small_SSPP.tex" "425500_Report_Small_SSPP.pdf" "425500_Report_Small_SSPP" 1708855975 0
   "../Source Code/CRS/matrixMultivectorProductCRS.cpp" 1708782006 3341 7ade91cd40170c741b5f0640457bee4d ""
-  "../Source Code/CRS/matrixMultivectorProductCRSCUDA.cu" 1708782003 7503 2d15b6bf9de6f1d7858f998f50a89f86 ""
+  "../Source Code/CRS/matrixMultivectorProductCRSCUDA.cu" 1708854906 7733 f30d696a60f6443305cdfb196188e3e9 ""
   "../Source Code/CRS/matrixMultivectorProductCRSOpenMP.cpp" 1708782264 3329 dd71feee9ac1a22b042d999fc9e2387c ""
   "../Source Code/ELLPACK/matrixMultivectorProductELLPACK.cpp" 1708782604 3784 cd0fe3a2c3c98d59595fbf69c509a890 ""
   "../Source Code/ELLPACK/matrixMultivectorProductELLPACKCUDA.cu" 1708783007 8102 e337c01d9154944530a4fdb051d550b5 ""
@@ -38,7 +38,7 @@
   "../results/images/openMP_Performance_k6.png" 1708792117 368230 b3c2d56522ac958e64be31e74fa961e3 ""
   "../results/images/openMP_Threads_CRS.png" 1708792104 923964 1314ceb29948bbd67a94caec38e31fb7 ""
   "../results/images/openMP_Threads_ELLPACK.png" 1708792107 873048 7cc11aae6e19a07df750d2b842ad593f ""
-  "/Users/alexis/Cranfield/Small Scall Parallele Programming/assigment/report/425500_Report_Small_SSPP.tex" 1708806295 69164 cfd77dd71d92250a6748c5c1756b0bed ""
+  "/Users/alexis/Cranfield/Small Scall Parallele Programming/assigment/report/425500_Report_Small_SSPP.tex" 1708855956 71395 cc7640afd3078f8d4cdfc25ab23230ae ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -194,13 +194,13 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1699977258 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1699977188 7883458 0fc50070f6972b3c0ed45389126cac27 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "425500_Report_Small_SSPP.aux" 1708806325 24274 a8406213779d7b35b1917c283630ca09 "pdflatex"
-  "425500_Report_Small_SSPP.bbl" 1708806316 599 9e96013eb1f541433dd38cf1f414f82e "bibtex 425500_Report_Small_SSPP"
-  "425500_Report_Small_SSPP.lof" 1708806325 3069 5b90d351bda9ed37ffde06e953626d58 "pdflatex"
-  "425500_Report_Small_SSPP.lot" 1708806325 756 877aef4dcb05243a4e6bd70e14989574 "pdflatex"
-  "425500_Report_Small_SSPP.out" 1708806325 1308 b8ced4bfd157060b6080c094a4b3cc6a "pdflatex"
-  "425500_Report_Small_SSPP.tex" 1708806295 69164 cfd77dd71d92250a6748c5c1756b0bed ""
-  "425500_Report_Small_SSPP.toc" 1708806325 7868 ec943b2c07a284b77afc970d3d058c7e "pdflatex"
+  "425500_Report_Small_SSPP.aux" 1708855975 24443 f8baddb2cbeeaf24e75561114df5f920 "pdflatex"
+  "425500_Report_Small_SSPP.bbl" 1708855967 1203 2f0432e8bfa8e9ef671ec6c60ee67af9 "bibtex 425500_Report_Small_SSPP"
+  "425500_Report_Small_SSPP.lof" 1708855975 3069 b7aa3f44b88058b4fc15990fa2e30a90 "pdflatex"
+  "425500_Report_Small_SSPP.lot" 1708855975 756 877aef4dcb05243a4e6bd70e14989574 "pdflatex"
+  "425500_Report_Small_SSPP.out" 1708855975 1308 b8ced4bfd157060b6080c094a4b3cc6a "pdflatex"
+  "425500_Report_Small_SSPP.tex" 1708855956 71395 cc7640afd3078f8d4cdfc25ab23230ae ""
+  "425500_Report_Small_SSPP.toc" 1708855975 7868 a1aa9832eb9bf94883add29bd6f001be "pdflatex"
   "CULogo.png" 1702630679 37421 80845472f4d1ac3cb2568c488d5d8081 ""
   "cranfieldthesis.sty" 1707061944 6185 11ca3d1f05076144f63ee44fe000dc22 ""
   (generated)

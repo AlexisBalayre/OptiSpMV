@@ -160,23 +160,24 @@
 \fancyhead[R]{\nouppercase{\rightmark}}
 
 \chapter{Introduction}
-High-Performance Computing (HPC) is a branch of computing that uses
-supercomputers and server clusters to solve complex, computationally intensive
-problems. Unlike a personal computer with a single processor, an HPC system is
-made up of many processors working in parallel, considerably increasing
-processing capacity. This enables scientists and engineers to carry out
-detailed numerical simulations, such as forecasting the weather or solving
-structural engineering problems.
+High Performance Computing (HPC) is essential for tackling complex
+computational challenges, using supercomputers and server clusters to run
+advanced numerical simulations. At Cranfield University, the CRESCENT2 HPC
+system features a dedicated configuration for research and teaching, with Intel
+Xeon E5 2620 processors and an architecture optimised for parallelism.
 
-Cranfield University has two HPC systems: CRESCENT2 and DELTA. However, this
-report will focus exclusively on CRESCENT2, which is an HPC cluster designed to
-provide computing power for teaching and research. CRESCENT 2 nodes are
-equipped with Intel Xeon E5 2620 processors, and each node contains two 16-core
-processors and 16 gigabytes of RAM.
+This report focuses on improving the performance of multiplying hollow matrices
+by fat vectors, a crucial operation in numerical linear algebra. Exploiting
+CUDA and OpenMP technologies, the study aims to explore shared-memory parallel
+programming strategies on CRESCENT2, using CSR and ELLPACK formats to assess
+their impact on computational efficiency.
 
-The aim of this report is to explore shared memory parallel programming
-strategies for optimising the performance of sparse matrix multiplication by a
-fat vector, a common operation in numerical linear algebra.
+The aim is to make full use of hardware resources, in particular Intel Xeon
+processors and Nvidia GPUs, to identify the most efficient optimisation methods
+depending on the characteristics of the matrices being processed. This will
+lead to the identification of optimal strategies for accelerating computations
+in numerical linear algebra, offering improved prospects for the scientific and
+engineering applications that depend on these operations.
 
 \chapter{Methodology}
 
@@ -224,6 +225,9 @@ non-zero elements and their positions. This format uses three arrays:
     \item \textbf{rowPtr}: An array where each entry marks the starting point in the \textit{values} and \textit{colIndices} arrays for the non-zero elements of a specific row, facilitating direct access to each row's data.
 \end{itemize}
 
+The \texttt{SparseMatrixCRS} structure is defined in
+appendix~\ref{appendix:data-structures}.
+
 \subsubsection{ELLPACK }
 The ELLPACK format optimises the storage and computation for matrices with a
 relatively uniform distribution of non-zero elements per row. It employs two 2D
@@ -238,32 +242,37 @@ arrays for this purpose:
 
 ELLPACK format is particularly advantageous for parallel computations on GPUs
 due to its consistent row length, which enables efficient memory access
-patterns and simplifies parallelization strategies.
+patterns and simplifies parallelization strategies. The
+\texttt{SparseMatrixELLPACK} structure is defined in
+appendix~\ref{appendix:data-structures}.
 
 \subsection{Fat Vector}
-The structure \texttt{FatVector} is designed to represent dense vectors or
+The structure \texttt{FatVector} is designed to represent fat vectors or
 low-dimensional dense matrices:
 
 \begin{itemize}
-    \item \textbf{values} : Contains the values of the dense vector or matrix.
+    \item \textbf{values} : Contains the values of the fat vector or matrix.
     \item \textbf{numRows} and \textbf{numCols} : Indicate the dimensions of the vector or matrix, making it possible to represent both column vectors and matrices with several columns.
 \end{itemize}
+
+The \texttt{FatVector} structure is defined in
+appendix~\ref{appendix:data-structures}.
 
 \newpage
 \section{Sparse Matrix - Fat Vector Multiplication}
 
 \subsection{Sequential Algorithm using CSR Format}
 
-Let \( A \) be a sparse matrix of size \( m \times n \) with \( z \) non-zero
+Let \( A \) be a sparse matrix of size \( m \times n \) with \( NZ \) non-zero
 elements, stored in CSR format, and \( X \) be a fat vector of size \( n \times
-k \). The sequential algorithm for multiplying \( A \) by \( X \) is
-implemented in Appendix~\ref{appendix:sequential}.
+k \). The sequential algorithm for multiplying \( A \) by \( X \) using the CSR
+format is implemented in Appendix~\ref{appendix:crs-sequential}.
 
 \subsubsection{Algorithm Flow}
 
 %TC:ignore 
 \begin{algorithm}[H]
-    \caption{Sparse Matrix-Dense Vector Multiplication (CRS)}
+    \caption{Sparse Matrix-Fat Vector Multiplication (CRS)}
     \begin{algorithmic}
         \Require $A$ is an $m \times n$ sparse matrix in CRS format
         \Require $X$ is an $n \times k$ fat vector
@@ -289,8 +298,8 @@ The algorithmic flow can be more explicitly detailed by:
     \item \textbf{Initialisation}: Prepare the result vector with the same number of rows as the sparse matrix and initialise all elements to zero.
     \item \textbf{Iteration Over Rows}: For each row in the sparse matrix, use the rowPtr array to find the starting and ending indices of non-zero elements in that row.
     \item \textbf{Iteration Over Non-Zero Elements}: For each non-zero element identified in the previous step, retrieve the column index and value from colIndices and values arrays, respectively.
-    \item \textbf{Multiplication and Accumulation}: Use the column index to identify the corresponding element(s) in the dense vector. Multiply each non-zero element by the corresponding element in the dense vector and accumulate the product in the appropriate position of the result vector. This step is repeated for each column in the dense vector if it has more than one column.
-    \item \textbf{Result Compilation}: After iterating through all rows and their non-zero elements, the result vector contains the product of the sparse matrix and the dense vector.
+    \item \textbf{Multiplication and Accumulation}: Use the column index to identify the corresponding element(s) in the fat vector. Multiply each non-zero element by the corresponding element in the fat vector and accumulate the product in the appropriate position of the result vector. This step is repeated for each column in the fat vector if it has more than one column.
+    \item \textbf{Result Compilation}: After iterating through all rows and their non-zero elements, the result vector contains the product of the sparse matrix and the fat vector.
 \end{enumerate}
 
 \subsubsection{Temporal Complexity Analysis}
@@ -317,12 +326,16 @@ irregular memory access patterns.
 
 \newpage
 \subsection{Sequential Algorithm using ELLPACK Format}
+Let \( A \) be a sparse matrix of size \( m \times n \) with \( NZ \) non-zero
+elements, stored in CSR format, and \( X \) be a fat vector of size \( n \times
+k \). The sequential algorithm for multiplying \( A \) by \( X \) using the
+ELLPACK format is implemented in Appendix~\ref{appendix:ellpack-sequential}.
 
 \subsubsection{Algorithm Flow}
 
 %TC:ignore
 \begin{algorithm}[H]
-    \caption{Sparse Matrix-Dense Vector Multiplication (ELLPACK)}
+    \caption{Sparse Matrix-Fat Vector Multiplication (ELLPACK)}
     \begin{algorithmic}
         \Require $A$ is an $m \times n$ sparse matrix in ELLPACK format
         \Require $X$ is an $n \times k$ fat vector
@@ -350,9 +363,9 @@ The algorithmic flow can be more explicitly detailed by:
     \item \textbf{Initialisation}: Similarly, prepare the result vector with an appropriate size and initialise all values to zero.
     \item \textbf{Iteration Over Rows}: Iterate over each row of the sparse matrix, given that the ELLPACK format stores a fixed number of elements (equal to the maximum number of non-zero elements in any row) for every row.
     \item \textbf{Iteration Over Elements}: For each element in a row (up to the maximum number of non-zero elements per row), check if the column index is valid (not a padding indicator, such as -1).
-    \item \textbf{Multiplication and Accumulation}: For each valid non-zero element, perform multiplication with the corresponding element(s) in the dense vector, similar to the CRS algorithm. This involves using the column index to locate the correct element in the dense vector and accumulating the product in the result vector.
+    \item \textbf{Multiplication and Accumulation}: For each valid non-zero element, perform multiplication with the corresponding element(s) in the fat vector, similar to the CRS algorithm. This involves using the column index to locate the correct element in the fat vector and accumulating the product in the result vector.
     \item \textbf{Handling Padding}: Ignore any padding indicators (e.g., column index -1) during multiplication to ensure that they do not affect the result.
-    \item \textbf{Result Compilation}: After processing all rows, the result vector is fully populated with the product of the sparse matrix in ELLPACK format and the dense vector.
+    \item \textbf{Result Compilation}: After processing all rows, the result vector is fully populated with the product of the sparse matrix in ELLPACK format and the fat vector.
 \end{enumerate}
 
 \subsubsection{Temporal Complexity Analysis}
@@ -387,7 +400,8 @@ OpenMP provides a powerful framework for parallelising computational tasks in
 shared-memory architectures. When applied to sparse matrix-vector
 multiplication, OpenMP enables significant performance enhancements for both
 CSR and ELLPACK formats by distributing the computation across multiple CPU
-threads.
+threads. The parallel algorithms for both formats are implemented in the
+appendix~\ref{appendix:openmp}.
 
 \subsubsection{Workflow and Optimisation Strategy}
 
@@ -396,14 +410,14 @@ series of steps designed to efficiently parallelise the computation and
 optimise resource utilisation:
 
 \begin{enumerate}
-    \item \textbf{Memory Allocation and Data Initialization:} Initially, the sparse matrix and dense vector are allocated in memory. OpenMP does not require explicit memory allocation on a separate device but operates directly on data in the process's address space.
+    \item \textbf{Memory Allocation and Data Initialization:} Initially, the sparse matrix and fat vector are allocated in memory. OpenMP does not require explicit memory allocation on a separate device but operates directly on data in the process's address space.
 
     \item \textbf{Kernel Execution:}
           \begin{itemize}
-              \item \textit{For CSR Format:} An OpenMP parallel for loop iterates over the rows of the matrix, where each thread processes a subset of rows, computing dot products between the non-zero elements and the corresponding entries of the dense vector.
-              \item \textit{For ELLPACK Format:} Similarly, an OpenMP parallel for loop is employed, with threads iterating over rows. The fixed-length rows of the ELLPACK format potentially offer more regular memory access patterns, which can be advantageous for performance.
+              \item \textit{For CSR Format:} An OpenMP parallel for loop iterates over the rows of the matrix, where each thread processes a subset of rows, computing dot products between the non-zero elements and the corresponding entries of the fat vector (See Appendix~\ref{appendix:crs-openmp}).
+              \item \textit{For ELLPACK Format:} Similarly, an OpenMP parallel for loop is employed, with threads iterating over rows. The fixed-length rows of the ELLPACK format potentially offer more regular memory access patterns, which can be advantageous for performance (See Appendix~\ref{appendix:ellpack-openmp}).
           \end{itemize}
-          Both implementations utilise \texttt{\#pragma omp parallel for} directives, optionally with dynamic scheduling to manage workload distribution among threads.
+          Both implementations utilise \texttt{\#pragma omp parallel for} directives, with dynamic scheduling to manage workload distribution among threads.
 
     \item \textbf{Performance Measurement:} The execution time for the parallel region is captured using \texttt{omp\_get\_wtime()}, allowing for the calculation of performance metrics such as execution time and GFLOPS (Giga Floating-Point Operations Per Second).
 
@@ -444,7 +458,8 @@ developed by NVIDIA. It enables graphics processing units (GPUs) to be used for
 general-purpose computing outside the traditional graphics context. With CUDA,
 developers can exploit the massively parallel computing power of NVIDIA GPUs
 for computationally intensive computing more efficiently than with traditional
-CPU approaches.
+CPU approaches. The parallel algorithms for both CSR and ELLPACK formats are
+implemented in the appendix~\ref{appendix:cuda}.
 
 \subsubsection{Workflow and Kernel Design}
 
@@ -452,12 +467,12 @@ The CUDA-based implementation follows a structured workflow, incorporating
 specialised kernels to exploit parallel processing capabilities of GPUs:
 
 \begin{enumerate}
-    \item \textbf{Memory Allocation and Data Transfer:} Initially, necessary memory for matrix data (values, column indices, and row pointers or ELLPACK structures), the dense vector, and the result vector is allocated on the GPU. Data is then transferred from the host to these allocated spaces.
+    \item \textbf{Memory Allocation and Data Transfer:} Initially, necessary memory for matrix data (values, column indices, and row pointers or ELLPACK structures), the fat vector, and the result vector is allocated on the GPU. Data is then transferred from the host to these allocated spaces.
 
     \item \textbf{Kernel Execution:}
           \begin{itemize}
-              \item \textit{CSR Kernel:} Processes the sparse matrix in CSR format. Each thread calculates a single element of the result vector by iterating over non-zero elements of a particular row, multiplying each by the corresponding vector element, and accumulating the result.
-              \item \textit{ELLPACK Kernel:} Similarly, processes the matrix in ELLPACK format. Threads are assigned to matrix rows, with each thread iterating over the fixed-size row data, performing multiplication and accumulation.
+              \item \textit{CSR Kernel:} Processes the sparse matrix in CSR format. Each thread calculates a single element of the result vector by iterating over non-zero elements of a particular row, multiplying each by the corresponding vector element, and accumulating the result (See Appendix~\ref{appendix:crs-cuda}).
+              \item \textit{ELLPACK Kernel:} Similarly, processes the matrix in ELLPACK format. Threads are assigned to matrix rows, with each thread iterating over the fixed-size row data, performing multiplication and accumulation operations (See Appendix~\ref{appendix:ellpack-cuda}).
           \end{itemize}
           Both kernels use atomic operations to safely add results to the output vector in cases of potential write conflicts.
 
@@ -497,8 +512,8 @@ performance on GPUs.
 In order to implement all the algorithms and test them, 2 main programs were
 created:
 \begin{itemize}
-    \item \texttt{runCuda.cpp} to test the CUDA implementations.
-    \item \texttt{runOpenMP.cpp} to test the OpenMP implementations.
+    \item \texttt{runOpenMP.cpp} to test the OpenMP implementations (See Appendix~\ref{appendix:openmp-main}).
+    \item \texttt{runCuda.cpp} to test the CUDA implementations (See Appendix~\ref{appendix:cuda-main}).
 \end{itemize}
 
 \subsection{Workflow}
@@ -506,9 +521,10 @@ created:
 Both programs follow the same workflow:
 
 \begin{enumerate}
-    \item Reading matrices from files in Matrix Market format.
-    \item Conversion of matrices from CRS format to ELLPACK format if necessary.
-    \item Generation of dense vectors with random values for multiplication.
+    \item Reading matrices from files in Matrix Market
+          format~\cite{Davis2011UFCollection, Kolodziej2019SuiteSparseInterface}.
+    \item Conversion of matrices from CRS format to ELLPACK format.
+    \item Generation of fat vectors with random values for multiplication.
     \item Perform matrix-vector multiplications using both sequential and parallel
           algorithms.
     \item Validate the results of the parallel algorithms against the sequential ones.
@@ -527,7 +543,7 @@ correctness verification, and performance evaluation methods.
 \paragraph{OpenMP Parameters:}
 \begin{itemize}
     \item \textbf{Matrix Sparsity:} Varied densities of hollow matrices are tested to simulate real-world scenarios and understand performance across different sparsity levels.
-    \item \textbf{Vector Sizes:} Dense vector sizes are varied (1, 2, 3, 6) to assess the impact on performance, reflecting different use cases.
+    \item \textbf{Vector Sizes:} Fat vector sizes are varied (1, 2, 3, 6) to assess the impact on performance, reflecting different use cases.
     \item \textbf{Thread Count:} Tests are conducted with 1 to 16 threads to identify the optimal concurrency level that maximizes performance.
     \item \textbf{Chunk Sizes:} To fine-tune dynamic workload distribution, chunk sizes are varied (2, 4, 8, 16, 32, 64, 128, 256), allowing for in-depth analysis of the parallel loop scheduling efficiency.
 \end{itemize}
@@ -535,7 +551,7 @@ correctness verification, and performance evaluation methods.
 \paragraph{CUDA Parameters:}
 \begin{itemize}
     \item \textbf{Matrix Sparsity:} Similar to OpenMP, different densities of hollow matrices are evaluated to gauge CUDA’s effectiveness across varying sparsity patterns.
-    \item \textbf{Vector Sizes (\texttt{ks}):} A range of dense vector sizes are tested to examine CUDA's adaptability to different data scales.
+    \item \textbf{Vector Sizes:} A range of fat vector sizes are tested to examine CUDA's adaptability to different data scales.
     \item \textbf{X Block Size:} CUDA block sizes along the X dimension are varied (8, 16, 32, 64) to optimize thread block configuration for the GPU architecture.
     \item \textbf{Y Block Size:} Similarly, Y block sizes (1, 2, 4, 8, 16) are adjusted to explore the impact on parallel execution efficiency.
 \end{itemize}
@@ -543,8 +559,35 @@ correctness verification, and performance evaluation methods.
 The sparse matrices used for testing are summarised in
 Table~\ref{tab:matrix_summary}.
 
+\subsubsection{Correctness Verification}
+
+To ensure the accuracy of both OpenMP and CUDA parallel implementations, a
+two-step verification process is adopted:
+\begin{enumerate}
+    \item \textbf{Result Comparison:} The outcomes of the sequential (baseline) and parallel implementations are compared using the \texttt{areMatricesEqual} function. This function evaluates if the two matrices are identical within a predefined tolerance level, ensuring computational integrity.
+    \item \textbf{Tolerance Threshold:} A small tolerance is allowed for floating-point operations to account for numerical precision variances inherent in parallel computations.
+\end{enumerate}
+
+\subsubsection{Performance Evaluation}
+
+Performance testing is structured to provide a comprehensive understanding of
+the efficiency gains from parallelization:
+\begin{enumerate}
+    \item \textbf{Execution Time Measurement:} The time taken by each implementation to complete the matrix-vector multiplication is precisely measured, using built-in timing functionalities like \texttt{omp\_get\_wtime()} for OpenMP and CUDA events for GPU measurements.
+    \item \textbf{GFLOPS Calculation:} Performance is quantitatively compared in terms of Giga Floating-Point Operations Per Second (GFLOPS), offering a normalized metric to evaluate computational speed. The formula used for GFLOPS calculation is:
+          \begin{equation}
+              \text{GFLOPS} = \frac{2 \times \text{NZ} \times k}{\text{Execution Time} \times 10^9}
+          \end{equation}
+          where NZ is the number of non-zero elements in the sparse matrix, k is the number of columns in the fat vector and the execution time is in seconds.
+    \item \textbf{Repetitions for Accuracy:} Each test configuration is executed 20 times. This repetition ensures statistical significance, allowing for the calculation of average execution times and minimizing the impact of outliers.
+\end{enumerate}
+
+Through this comprehensive testing approach, the parallel implementations'
+correctness and performance are meticulously evaluated, ensuring reliability
+and efficiency of the sparse matrix-vector multiplication algorithms.
+
 %TC:ignore
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
         \hline
@@ -584,29 +627,6 @@ Table~\ref{tab:matrix_summary}.
     \label{tab:matrix_summary}
 \end{table}
 %TC:endignore
-
-\subsubsection{Correctness Verification}
-
-To ensure the accuracy of both OpenMP and CUDA parallel implementations, a
-two-step verification process is adopted:
-\begin{enumerate}
-    \item \textbf{Result Comparison:} The outcomes of the sequential (baseline) and parallel implementations are compared using the \texttt{areMatricesEqual} function. This function evaluates if the two matrices are identical within a predefined tolerance level, ensuring computational integrity.
-    \item \textbf{Tolerance Threshold:} A small tolerance is allowed for floating-point operations to account for numerical precision variances inherent in parallel computations.
-\end{enumerate}
-
-\subsubsection{Performance Evaluation}
-
-Performance testing is structured to provide a comprehensive understanding of
-the efficiency gains from parallelization:
-\begin{enumerate}
-    \item \textbf{Execution Time Measurement:} The time taken by each implementation to complete the matrix-vector multiplication is precisely measured, using built-in timing functionalities like \texttt{omp\_get\_wtime()} for OpenMP and CUDA events for GPU measurements.
-    \item \textbf{GFLOPS Calculation:} Performance is quantitatively compared in terms of Giga Floating-Point Operations Per Second (GFLOPS), offering a normalized metric to evaluate computational speed.
-    \item \textbf{Repetitions for Accuracy:} Each test configuration is executed 20 times. This repetition ensures statistical significance, allowing for the calculation of average execution times and minimizing the impact of outliers.
-\end{enumerate}
-
-Through this comprehensive testing approach, the parallel implementations'
-correctness and performance are meticulously evaluated, ensuring reliability
-and efficiency of the sparse matrix-vector multiplication algorithms.
 
 \chapter{Results and Discussion}
 \section{Results}
@@ -669,40 +689,40 @@ A few key observations can be made:
     \item \textbf{Efficiency in Dense Matrices:} The CRS format appears to be particularly efficient at handling high-density matrices (higher AVG NZR and MAX NZR), which could be attributed to its storage efficiency and the way it streamlines the multiplication process for rows with varying lengths of non-zero elements.
 \end{itemize}
 
+\newpage
 \subsection{OpenMP}
 \subsubsection{Chunk Size Analysis}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/openMP_ChunkSize_CRS.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/openMP_ChunkSize_CRS.png}
     \caption{OpenMP Performance for CRS Format depending on Chunk Size}
     \label{fig:openmpchunksizecrs}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/openMP_ChunkSize_ELLPACK.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/openMP_ChunkSize_ELLPACK.png}
     \caption{OpenMP Performance for ELLPACK Format depending on Chunk Size}
     \label{fig:openmpchunksizellpack}
 \end{figure}
 
 As shown in Figures~\ref{fig:openmpchunksizecrs} and
 \ref{fig:openmpchunksizellpack}, the performance of the OpenMP parallel
-algorithms is influenced by the chunk size. For lower sparsity matrices, the
+algorithms is influenced by the chunk size. For lower density matrices, the
 optimal chunk size is 64 for the CRS format and 32 for the ELLPACK format. For
-higher sparsity matrices, the optimal chunk size is 128 or 256 for both
-formats.
+higher density matrices, the optimal chunk size is 128 or 256 for both formats.
 
 \subsubsection{Thread Count Analysis}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/openMP_Threads_CRS.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/openMP_Threads_CRS.png}
     \caption{OpenMP Performance for CRS Format depending on Threads}
     \label{fig:openmpthreadscrs}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6 \textwidth]{../results/images/openMP_Threads_ELLPACK.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/openMP_Threads_ELLPACK.png}
     \caption{OpenMP Performance for ELLPACK Format depending on Threads}
     \label{fig:openmpthreadsellpack}
 \end{figure}
@@ -741,8 +761,6 @@ starts to stagnate due to the overhead of managing the threads.
     \caption{Performance of Serial and Parallel Algorithms using OpenMP for $k=6$}
     \label{fig:openmp-performance-k6}
 \end{figure}
-
-As shown in Figures~\ref{fig:openmp-performance-k1},
 
 %TC:ignore 
 \begin{longtable}{lcccr}
@@ -791,6 +809,7 @@ As shown in Figures~\ref{fig:openmp-performance-k1},
 \end{longtable}
 %TC:endignore
 
+\newpage
 The performance evaluation of the CRS and ELLPACK formats, when parallelized
 with OpenMP, shows a preference for CRS in a majority of cases. This trend,
 indicated by a frequent superiority of the CRS format, highlights its
@@ -805,42 +824,55 @@ performance via OpenMP's parallel optimisation.
 Special cases such as \textit{cage4} and \textit{olm1000} show lower speed-ups,
 revealing the limits of parallelization for certain matrix structures. The
 influence of matrix density and size is also notable, with high densities and
-large dense vectors favouring the CRS format more, illustrating its
-effectiveness in processing large workloads under OpenMP.
+large fat vectors favouring the CRS format more, illustrating its effectiveness
+in processing large workloads under OpenMP.
 
+\newpage
 \subsection{CUDA}
 
 \subsubsection{X Block Size Analysis}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/CUDA_xBlockSize_CRS.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/CUDA_xBlockSize_CRS.png}
     \caption{CUDA Performance for CRS Format depending on X BlockSize}
     \label{fig:cudaxblocksizecrs}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/CUDA_xBlockSize_ELLPACK.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/CUDA_xBlockSize_ELLPACK.png}
     \caption{CUDA Performance for ELLPACK Format depending on X BlockSize}
     \label{fig:cudaxblocksizeellpack}
 \end{figure}
+
+As shown in Figures~\ref{fig:cudaxblocksizecrs},
+\ref{fig:cudaxblocksizeellpack}, the performance of the CUDA parallel
+algorithms is influenced by the X block size. For the CRS format, the optimal X
+block size is 16 most matrices, while for the ELLPACK format, the optimal X
+block size is 16 or even 8 for some matrices with higher density.
 
 \subsubsection{Y Block Size Analysis}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/CUDA_yBlockSize_CRS.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/CUDA_yBlockSize_CRS.png}
     \caption{CUDA Performance for CRS Format depending on Y BlockSize}
     \label{fig:cudayblocksizecrs}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{../results/images/CUDA_yBlockSize_ELLPACK.png}
+    \includegraphics[width=0.5\textwidth]{../results/images/CUDA_yBlockSize_ELLPACK.png}
     \caption{CUDA Performance for ELLPACK Format depending on Y BlockSize}
     \label{fig:cudayblocksizeellpack}
 \end{figure}
+
+As shown in Figures~\ref{fig:cudayblocksizecrs} and
+\ref{fig:cudayblocksizeellpack}, the performance of the CUDA parallel
+algorithms is influenced by the Y block size. For the CRS format, the optimal Y
+block size is 16 for most matrices, while for the ELLPACK format, the optimal Y
+block size is 16 or 4 for some matrices with higher density.
 
 \subsubsection{Performance Comparison}
 
@@ -1034,7 +1066,7 @@ on hollow matrices.
 \chapter{Conclusion}
 
 In summary, this report explored the performance of the CSR and ELLPACK formats
-for dense vector multiplication of hollow matrices using the OpenMP and CUDA
+for fat vector multiplication of hollow matrices using the OpenMP and CUDA
 parallel programming paradigms. The results show a marked preference for the
 CSR format when parallelized with OpenMP, which is probably due to more
 efficient memory management and optimal task distribution between threads. On
@@ -1240,7 +1272,6 @@ engineering applications that depend on these intensive computations.
         \item \texttt{int xBlockSize}: X block size for the parallelization.
         \item \texttt{int yBlockSize}: Y block size for the parallelization.
     \end{itemize}
-
 
 \end{subappendices}
 

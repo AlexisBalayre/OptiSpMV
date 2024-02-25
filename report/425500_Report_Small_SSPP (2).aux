@@ -18,8 +18,9 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {chapter}{Table of Contents}{iii}{chapter*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{List of Figures}{v}{chapter*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{List of Tables}{vi}{chapter*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{List of Figures}{vi}{chapter*.3}\protected@file@percent }
+\citation{10.1145/3017994}
+\@writefile{toc}{\contentsline {chapter}{List of Tables}{vii}{chapter*.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -44,77 +45,102 @@
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Sparse Matrix-Dense Vector Multiplication (ELLPACK)\relax }}{6}{algorithm.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2.2}Temporal Complexity Analysis}{7}{subsubsection.2.3.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Parallel Algorithms}{8}{section.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}OpenMP}{8}{subsection.2.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1.1}Programme Workflow}{8}{subsubsection.2.4.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1.2}Expected Performance}{8}{subsubsection.2.4.1.2}\protected@file@percent }
-\citation{petsc-web-page}
-\citation{Lugowski2023FastMatrixMarket}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Performance Metrics}{9}{section.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Results and Discussion}{11}{chapter.3}\protected@file@percent }
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Results}{11}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}OpenMP (Open Multi-Processing)}{8}{subsection.2.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1.1}Workflow and Optimisation Strategy}{8}{subsubsection.2.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1.2}Expected Performance Improvements}{9}{subsubsection.2.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1.3}Challenges and Considerations}{9}{subsubsection.2.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}CUDA}{10}{subsection.2.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2.1}Workflow and Kernel Design}{10}{subsubsection.2.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2.2}Expected Performance Improvements}{10}{subsubsection.2.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2.3}Challenges and Considerations}{11}{subsubsection.2.4.2.3}\protected@file@percent }
+\citation{Davis2011UFCollection,Kolodziej2019SuiteSparseInterface}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Implementation and Testing}{12}{section.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Workflow}{12}{subsection.2.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Comprehensive Testing Strategy}{12}{subsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.2.1}Test Parameters Configuration}{12}{subsubsection.2.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {2.5.2.1.1}OpenMP Parameters:}{12}{paragraph.2.5.2.1.1}\protected@file@percent }
+\citation{10.1145/3017994}
+\citation{10.1145/3017994}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {2.5.2.1.2}CUDA Parameters:}{13}{paragraph.2.5.2.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.2.2}Correctness Verification}{13}{subsubsection.2.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.2.3}Performance Evaluation}{13}{subsubsection.2.5.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Summary of sparse matrices\nobreakspace  {}\cite  {10.1145/3017994}\relax }}{14}{table.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:matrix_summary}{{2.1}{14}{Summary of sparse matrices~\cite {10.1145/3017994}\relax }{table.caption.5}{}}
 \gdef \LT@i {\LT@entry 
     {4}{102.63521pt}\LT@entry 
     {4}{57.00002pt}\LT@entry 
     {1}{68.4596pt}\LT@entry 
     {1}{86.09914pt}\LT@entry 
     {1}{0.0pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Performance Comparison of CRS and ELLPACK Sequential Algorithms\relax }}{12}{table.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces OpenMP Performance for CRS Format depending on Chunk Size\relax }}{13}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:openmpchunksizecrs}{{3.1}{13}{OpenMP Performance for CRS Format depending on Chunk Size\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces OpenMP Performance for ELLPACK Format depending on Chunk Size\relax }}{13}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:openmpchunksizellpack}{{3.2}{13}{OpenMP Performance for ELLPACK Format depending on Chunk Size\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces OpenMP Performance for CRS Format depending on Threads\relax }}{14}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:openmpthreadscrs}{{3.3}{14}{OpenMP Performance for CRS Format depending on Threads\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces OpenMP Performance for ELLPACK Format depending on Threads\relax }}{14}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:openmpthreadsellpack}{{3.4}{14}{OpenMP Performance for ELLPACK Format depending on Threads\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=1$\relax }}{15}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:openmp-performance-k1}{{3.5}{15}{Performance of Serial and Parallel Algorithms using OpenMP for $k=1$\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=2$\relax }}{15}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:openmp-performance-k2}{{3.6}{15}{Performance of Serial and Parallel Algorithms using OpenMP for $k=2$\relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=3$\relax }}{16}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:openmp-performance-k3}{{3.7}{16}{Performance of Serial and Parallel Algorithms using OpenMP for $k=3$\relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=6$\relax }}{16}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:openmp-performance-k6}{{3.8}{16}{Performance of Serial and Parallel Algorithms using OpenMP for $k=6$\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Results and Discussion}{15}{chapter.3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Results}{15}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Sequential Algorithms}{15}{subsection.3.1.1}\protected@file@percent }
+\newlabel{tab:sequential}{{3.1}{15}{Sequential Algorithms}{table.3.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Performance Comparison of CRS and ELLPACK Sequential Algorithms\relax }}{15}{table.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}OpenMP}{16}{subsection.3.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.1}Chunk Size Analysis}{16}{subsubsection.3.1.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces OpenMP Performance for CRS Format depending on Chunk Size\relax }}{16}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:openmpchunksizecrs}{{3.1}{16}{OpenMP Performance for CRS Format depending on Chunk Size\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces OpenMP Performance for ELLPACK Format depending on Chunk Size\relax }}{17}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:openmpchunksizellpack}{{3.2}{17}{OpenMP Performance for ELLPACK Format depending on Chunk Size\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.2}Thread Count Analysis}{18}{subsubsection.3.1.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces OpenMP Performance for CRS Format depending on Threads\relax }}{18}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:openmpthreadscrs}{{3.3}{18}{OpenMP Performance for CRS Format depending on Threads\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces OpenMP Performance for ELLPACK Format depending on Threads\relax }}{18}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:openmpthreadsellpack}{{3.4}{18}{OpenMP Performance for ELLPACK Format depending on Threads\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2.3}Performance Comparison}{19}{subsubsection.3.1.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=1$\relax }}{19}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:openmp-performance-k1}{{3.5}{19}{Performance of Serial and Parallel Algorithms using OpenMP for $k=1$\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=2$\relax }}{20}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:openmp-performance-k2}{{3.6}{20}{Performance of Serial and Parallel Algorithms using OpenMP for $k=2$\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=3$\relax }}{20}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:openmp-performance-k3}{{3.7}{20}{Performance of Serial and Parallel Algorithms using OpenMP for $k=3$\relax }{figure.caption.12}{}}
 \gdef \LT@ii {\LT@entry 
     {4}{102.63521pt}\LT@entry 
     {4}{57.00002pt}\LT@entry 
     {1}{68.4596pt}\LT@entry 
     {1}{86.09914pt}\LT@entry 
     {4}{57.00002pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces CRS vs ELLPACK avec OpenMP\relax }}{17}{table.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces CUDA Performance for CRS Format depending on X BlockSize\relax }}{18}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:cudaxblocksizecrs}{{3.9}{18}{CUDA Performance for CRS Format depending on X BlockSize\relax }{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces CUDA Performance for ELLPACK Format depending on X BlockSize\relax }}{18}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:cudaxblocksizeellpack}{{3.10}{18}{CUDA Performance for ELLPACK Format depending on X BlockSize\relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces CUDA Performance for CRS Format depending on Y BlockSize\relax }}{19}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:cudayblocksizecrs}{{3.11}{19}{CUDA Performance for CRS Format depending on Y BlockSize\relax }{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces CUDA Performance for ELLPACK Format depending on Y BlockSize\relax }}{19}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:cudayblocksizeellpack}{{3.12}{19}{CUDA Performance for ELLPACK Format depending on Y BlockSize\relax }{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=1$\relax }}{20}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:cuda-performance-k1}{{3.13}{20}{Performance of Serial and Parallel Algorithms using CUDA for $k=1$\relax }{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=2$\relax }}{20}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:cuda-performance-k2}{{3.14}{20}{Performance of Serial and Parallel Algorithms using CUDA for $k=2$\relax }{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=3$\relax }}{21}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:cuda-performance-k3}{{3.15}{21}{Performance of Serial and Parallel Algorithms using CUDA for $k=3$\relax }{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=6$\relax }}{21}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:cuda-performance-k6}{{3.16}{21}{Performance of Serial and Parallel Algorithms using CUDA for $k=6$\relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Performance of Serial and Parallel Algorithms using OpenMP for $k=6$\relax }}{21}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:openmp-performance-k6}{{3.8}{21}{Performance of Serial and Parallel Algorithms using OpenMP for $k=6$\relax }{figure.caption.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces CRS vs ELLPACK using OpenMP\relax }}{21}{table.3.2}\protected@file@percent }
+\newlabel{tab:crsvsellpackopenmp}{{3.2}{21}{Performance Comparison}{table.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}CUDA}{23}{subsection.3.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.1}X Block Size Analysis}{23}{subsubsection.3.1.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces CUDA Performance for CRS Format depending on X BlockSize\relax }}{23}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:cudaxblocksizecrs}{{3.9}{23}{CUDA Performance for CRS Format depending on X BlockSize\relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces CUDA Performance for ELLPACK Format depending on X BlockSize\relax }}{23}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:cudaxblocksizeellpack}{{3.10}{23}{CUDA Performance for ELLPACK Format depending on X BlockSize\relax }{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.2}Y Block Size Analysis}{24}{subsubsection.3.1.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces CUDA Performance for CRS Format depending on Y BlockSize\relax }}{24}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:cudayblocksizecrs}{{3.11}{24}{CUDA Performance for CRS Format depending on Y BlockSize\relax }{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces CUDA Performance for ELLPACK Format depending on Y BlockSize\relax }}{24}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:cudayblocksizeellpack}{{3.12}{24}{CUDA Performance for ELLPACK Format depending on Y BlockSize\relax }{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3.3}Performance Comparison}{25}{subsubsection.3.1.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=1$\relax }}{25}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:cuda-performance-k1}{{3.13}{25}{Performance of Serial and Parallel Algorithms using CUDA for $k=1$\relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=2$\relax }}{25}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:cuda-performance-k2}{{3.14}{25}{Performance of Serial and Parallel Algorithms using CUDA for $k=2$\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=3$\relax }}{26}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:cuda-performance-k3}{{3.15}{26}{Performance of Serial and Parallel Algorithms using CUDA for $k=3$\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces Performance of Serial and Parallel Algorithms using CUDA for $k=6$\relax }}{26}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:cuda-performance-k6}{{3.16}{26}{Performance of Serial and Parallel Algorithms using CUDA for $k=6$\relax }{figure.caption.21}{}}
 \gdef \LT@iii {\LT@entry 
     {4}{102.63521pt}\LT@entry 
     {4}{57.00002pt}\LT@entry 
     {1}{68.4596pt}\LT@entry 
     {1}{86.09914pt}\LT@entry 
     {4}{63.00002pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Comparaison des Performances des Algorithmes CRS et ELLPACK avec CUDA\relax }}{22}{table.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces OpenMP vs CUDA Performance for $k=1$\relax }}{23}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:openmp-cuda-performance-k1}{{3.17}{23}{OpenMP vs CUDA Performance for $k=1$\relax }{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces OpenMP vs CUDA Performance for $k=2$\relax }}{23}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:openmp-cuda-performance-k2}{{3.18}{23}{OpenMP vs CUDA Performance for $k=2$\relax }{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces OpenMP vs CUDA Performance for $k=3$\relax }}{24}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:openmp-cuda-performance-k3}{{3.19}{24}{OpenMP vs CUDA Performance for $k=3$\relax }{figure.caption.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces OpenMP vs CUDA Performance for $k=6$\relax }}{24}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:openmp-cuda-performance-k6}{{3.20}{24}{OpenMP vs CUDA Performance for $k=6$\relax }{figure.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces CRS vs ELLPACK using CUDA\relax }}{27}{table.3.3}\protected@file@percent }
+\newlabel{tab:crsvsellpackcuda}{{3.3}{27}{Performance Comparison}{table.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Overall Performance Comparison}{28}{subsection.3.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces OpenMP vs CUDA Performance for $k=1$\relax }}{28}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:openmp-cuda-performance-k1}{{3.17}{28}{OpenMP vs CUDA Performance for $k=1$\relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces OpenMP vs CUDA Performance for $k=2$\relax }}{28}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:openmp-cuda-performance-k2}{{3.18}{28}{OpenMP vs CUDA Performance for $k=2$\relax }{figure.caption.23}{}}
 \gdef \LT@iv {\LT@entry 
     {4}{102.63521pt}\LT@entry 
     {1}{103.09119pt}\LT@entry 
@@ -122,42 +148,88 @@
     {1}{76.99133pt}\LT@entry 
     {4}{63.00002pt}\LT@entry 
     {1}{0.0pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Comparaison des Performances entre CUDA, OpenMP, et Séquentiel\relax }}{25}{table.3.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of sparse matrices\relax }}{26}{table.caption.5}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:matrix_summary}{{3.1}{26}{Summary of sparse matrices\relax }{table.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces OpenMP vs CUDA Performance for $k=3$\relax }}{29}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:openmp-cuda-performance-k3}{{3.19}{29}{OpenMP vs CUDA Performance for $k=3$\relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces OpenMP vs CUDA Performance for $k=6$\relax }}{29}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:openmp-cuda-performance-k6}{{3.20}{29}{OpenMP vs CUDA Performance for $k=6$\relax }{figure.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Overall Performance Comparison\relax }}{29}{table.3.4}\protected@file@percent }
+\newlabel{tab:overallperformance}{{3.4}{29}{Overall Performance Comparison}{table.3.4}{}}
 \bibstyle{CranfieldNumbered}
 \bibdata{CUCitations}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Conclusion}{27}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Conclusion}{31}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\bibcite{petsc-web-page}{{1}{}{{}}{{}}}
-\bibcite{Lugowski2023FastMatrixMarket}{{2}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{References}{28}{chapter*.26}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Documentation}{29}{appendix.A}\protected@file@percent }
+\bibcite{10.1145/3017994}{{1}{}{{}}{{}}}
+\bibcite{Davis2011UFCollection}{{2}{}{{}}{{}}}
+\bibcite{Kolodziej2019SuiteSparseInterface}{{3}{}{{}}{{}}}
+\bibcite{GCC}{{4}{}{{}}{{}}}
+\bibcite{CUDA}{{5}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {chapter}{References}{32}{chapter*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Documentation}{33}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.A}Project tree}{29}{section.1.A.A}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.B}Getting Started}{29}{section.1.A.B}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.C}Methods Overview}{30}{section.1.A.C}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.1}Utils.h}{30}{subsection.1.A.C.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.1}ConvertPETScMatToFatVector}{30}{subsubsection.1.A.C.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.2}areMatricesEqual}{30}{subsubsection.1.A.C.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.3}readMatrixMarketFile}{30}{subsubsection.1.A.C.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.4}generateLargeFatVector}{31}{subsubsection.1.A.C.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.5}serialize and deserialize}{31}{subsubsection.1.A.C.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.2}SparseMatrixFatVectorMultiply.h}{31}{subsection.1.A.C.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.2.1}sparseMatrixFatVectorMultiply}{31}{subsubsection.1.A.C.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.3}SparseMatrixFatVectorMultiplyRowWise.h}{32}{subsection.1.A.C.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.3.1}sparseMatrixFatVectorMultiplyRowWise}{32}{subsubsection.1.A.C.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.4}SparseMatrixFatVectorMultiplyColumnWise.h}{32}{subsection.1.A.C.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.4.1}sparseMatrixFatVectorMultiplyColumnWise}{32}{subsubsection.1.A.C.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.5}SparseMatrixFatVectorMultiplyNonZeroElement.h}{32}{subsection.1.A.C.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.5.1}sparseMatrixFatVectorMultiplyNonZeroElement}{32}{subsubsection.1.A.C.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.A}Project tree}{33}{section.1.A.A}\protected@file@percent }
+\citation{GCC}
+\citation{CUDA}
+\@writefile{toc}{\contentsline {section}{\numberline {A.B}Getting Started}{34}{section.1.A.B}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.C}Methods Overview}{34}{section.1.A.C}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.1}Utils.h}{34}{subsection.1.A.C.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.1}convertCRStoELLPACK}{34}{subsubsection.1.A.C.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.2}areMatricesEqual}{34}{subsubsection.1.A.C.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.3}readMatrixMarketFile}{34}{subsubsection.1.A.C.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.1.4}generateLargeFatVector}{35}{subsubsection.1.A.C.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.2}matrixMultivectorProductCRS.h}{35}{subsection.1.A.C.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.2.1}matrixMultivectorProductCRS}{35}{subsubsection.1.A.C.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.3}matrixMultivectorProductCRSOpenMP.h}{35}{subsection.1.A.C.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.3.1}matrixMultivectorProductCRSOpenMP}{35}{subsubsection.1.A.C.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.4}matrixMultivectorProductCRSCUDA.h}{36}{subsection.1.A.C.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.4.1}matrixMultivectorProductCRSCUDA}{36}{subsubsection.1.A.C.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.5}matrixMultivectorProductELLPACK.h}{36}{subsection.1.A.C.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.5.1}matrixMultivectorProductELLPACK}{36}{subsubsection.1.A.C.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.6}matrixMultivectorProductELLPACKOpenMP.h}{36}{subsection.1.A.C.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.6.1}matrixMultivectorProductELLPACKOpenMP}{36}{subsubsection.1.A.C.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.C.7}matrixMultivectorProductELLPACKCUDA.h}{37}{subsection.1.A.C.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.C.7.1}matrixMultivectorProductELLPACKCUDA}{37}{subsubsection.1.A.C.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Source Codes}{38}{appendix.B}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {B.A}Data Structures}{38}{section.2.B.A}\protected@file@percent }
+\newlabel{appendix:data-structures}{{B.A}{38}{Data Structures}{section.2.B.A}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/MatrixDefinitions.h}{38}{lstlisting.B.-2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.B}Sequential Algorithm}{40}{section.2.B.B}\protected@file@percent }
+\newlabel{appendix:sequential}{{B.B}{40}{Sequential Algorithm}{section.2.B.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.B.1}CRS Format}{40}{subsection.2.B.B.1}\protected@file@percent }
+\newlabel{appendix:crs-sequential}{{B.B.1}{40}{CRS Format}{subsection.2.B.B.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/CRS/matrixMultivectorProductCRS.cpp}{40}{lstlisting.B.-3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.B.2}ELLPACK Format}{41}{subsection.2.B.B.2}\protected@file@percent }
+\newlabel{appendix:ellpack-sequential}{{B.B.2}{41}{ELLPACK Format}{subsection.2.B.B.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/ELLPACK/matrixMultivectorProductELLPACK.cpp}{41}{lstlisting.B.-4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.C}OpenMP Parallel Algorithm}{43}{section.2.B.C}\protected@file@percent }
+\newlabel{appendix:openmp}{{B.C}{43}{OpenMP Parallel Algorithm}{section.2.B.C}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.C.1}CRS Format}{43}{subsection.2.B.C.1}\protected@file@percent }
+\newlabel{appendix:crs-openmp}{{B.C.1}{43}{CRS Format}{subsection.2.B.C.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/CRS/matrixMultivectorProductCRSOpenMP.cpp}{43}{lstlisting.B.-5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.C.2}ELLPACK Format}{44}{subsection.2.B.C.2}\protected@file@percent }
+\newlabel{appendix:ellpack-openmp}{{B.C.2}{44}{ELLPACK Format}{subsection.2.B.C.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/ELLPACK/matrixMultivectorProductELLPACKOpenMP.cpp}{44}{lstlisting.B.-6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.D}CUDA Parallel Algorithm}{46}{section.2.B.D}\protected@file@percent }
+\newlabel{appendix:cuda}{{B.D}{46}{CUDA Parallel Algorithm}{section.2.B.D}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.D.1}CRS Format}{46}{subsection.2.B.D.1}\protected@file@percent }
+\newlabel{appendix:crs-cuda}{{B.D.1}{46}{CRS Format}{subsection.2.B.D.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/CRS/matrixMultivectorProductCRSCUDA.cu}{46}{lstlisting.B.-7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.D.2}ELLPACK Format}{48}{subsection.2.B.D.2}\protected@file@percent }
+\newlabel{appendix:ellpack-cuda}{{B.D.2}{48}{ELLPACK Format}{subsection.2.B.D.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/ELLPACK/matrixMultivectorProductELLPACKCUDA.cu}{48}{lstlisting.B.-8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.E}Utilities}{52}{section.2.B.E}\protected@file@percent }
+\newlabel{appendix:utilities}{{B.E}{52}{Utilities}{section.2.B.E}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/utils.cpp}{52}{lstlisting.B.-9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.F}Main Program}{55}{section.2.B.F}\protected@file@percent }
+\newlabel{appendix:main}{{B.F}{55}{Main Program}{section.2.B.F}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.F.1}OpenMP}{55}{subsection.2.B.F.1}\protected@file@percent }
+\newlabel{appendix:openmp-main}{{B.F.1}{55}{OpenMP}{subsection.2.B.F.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/runOpenMP.cpp}{55}{lstlisting.B.-10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.F.2}CUDA}{58}{subsection.2.B.F.2}\protected@file@percent }
+\newlabel{appendix:cuda-main}{{B.F.2}{58}{CUDA}{subsection.2.B.F.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{../Source Code/runCuda.cpp}{58}{lstlisting.B.-11}\protected@file@percent }
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Source Codes}{33}{appendix.B}\protected@file@percent }
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {B.A}Data Structures}{33}{section.2.B.A}\protected@file@percent }
-\newlabel{appendix:data-structures}{{B.A}{33}{Data Structures}{section.2.B.A}{}}
-\gdef \@abspage@last{39}
+\gdef \@abspage@last{68}

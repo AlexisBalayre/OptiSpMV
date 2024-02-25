@@ -105,10 +105,13 @@ double matrixMultivectorProductCRSCUDA(const SparseMatrixCRS &sparseMatrix, cons
     cudaEventDestroy(stop);
 
     // Calculate performance
-    float avgTimeMs = std::accumulate(times.begin(), times.end(), 0.0f) / times.size(); // Average time
+    float avgTimeMs = std::accumulate(times.begin(), times.end(), 0.0f) / times.size(); // Average time in milliseconds
     int NZ = sparseMatrix.values.size();                                                // Number of non-zero entries
     int k = fatVector.numCols;                                                          // Number of columns in matrix X
-    float GFLOPS = (2.e-6 * NZ * k) / avgTimeMs;                                        // Performance in GFLOPS
+    float T = avgTimeMs / 1000.0f;                                                      // Convert to seconds
+    double FLOPS = (2.0 * NZ * k) / T;                                                  // Calculate FLOPS
+    double GFLOPS = FLOPS / 1e9;                                                        // Convert to GFLOPS
+
 
     // DISPLAY PERFORMANCE (FOR DEBUGGING PURPOSES)
     // std::cout << "Average CUDA operation time: " << avgTimeMs << " ms" << std::endl;
