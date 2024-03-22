@@ -69,3 +69,6 @@ OptiSpMV/
   ```bash
   ./runCuda
   ```
+
+## Results
+![OpenMP_vs_CUDA_Performance_k6](https://github.com/AlexisBalayre/OptiSpMV/assets/60859013/2df47784-15cd-49d1-aa70-704def839e96)
